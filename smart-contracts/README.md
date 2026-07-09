@@ -1,12 +1,16 @@
 # Netlink Smart Contract
 
-Contents:
+This directory contains the official smart contract source code and verification files for Netlink (NET) on Polygon.
 
-- Netlink.sol — Official ERC-20 source code.
-- standard-input.json — Solidity Standard JSON Input used for contract verification on EVM explorers.
+## Files
 
-Compiler:
-- Solidity v0.8.30
+- `Netlink.sol` — Official ERC-20 smart contract source code.
+- `standard-input.json` — Solidity Standard JSON Input used for contract verification on EVM-compatible blockchain explorers.
 
-License:
-- MIT
+## Contract Information
+
+- Token: Netlink (NET)
+- Network: Polygon PoS
+- Compiler: Solidity v0.8.30
+- OpenZeppelin: v5.4.0
+- License: MIT
