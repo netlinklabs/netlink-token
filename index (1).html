@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netlink Ecosystem</title>
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-new-logo-trans.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      animation: marquee 30s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #2dd4bf, #3b82f6, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    html { scroll-behavior: smooth; }
+    canvas { display: block; }
+  </style>
+</head>
+<body class="font-inter text-slate-700 antialiased">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-xl border-b border-slate-800/50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-18 py-3">
+        <a href="#" class="flex items-center gap-3 group">
+          <img src="https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-logo-bgdark.png" class="h-9 w-auto transition-transform group-hover:scale-105" alt="Netlink">
+        </a>
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="#ecosystem" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Ecosystem</a>
+          <a href="#technology" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Technology</a>
+          <a href="#tokenomics" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Tokenomics</a>
+          <a href="#roadmap" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Roadmap</a>
+        </div>
+        <a href="#" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 hover:-translate-y-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          Connect Wallet
+        </a>
+        <button class="lg:hidden text-slate-300 hover:text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden bg-slate-900 border-t border-slate-800">
+      <div class="px-4 py-4 space-y-3">
+        <a href="#ecosystem" class="block text-slate-400 hover:text-teal-400 py-2">Ecosystem</a>
+        <a href="#technology" class="block text-slate-400 hover:text-teal-400 py-2">Technology</a>
+        <a href="#tokenomics" class="block text-slate-400 hover:text-teal-400 py-2">Tokenomics</a>
+        <a href="#roadmap" class="block text-slate-400 hover:text-teal-400 py-2">Roadmap</a>
+        <a href="#" class="block w-full text-center px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold">Connect Wallet</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero with Globe -->
+  <section class="relative min-h-screen flex items-center bg-slate-900 overflow-hidden pt-20">
+    <canvas id="hero-globe" class="absolute inset-0 w-full h-full z-0"></canvas>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-sm font-medium mb-8 backdrop-blur-sm">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-400"></span>
+          </span>
+          Building the Bridge from Web2 to Web3
+        </div>
+        <h1 class="font-poppins text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+          Welcome to the<br>
+          <span class="gradient-text">Netlink Ecosystem</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-400 max-w-xl mb-10 leading-relaxed font-inter">
+          Netlink makes it easier for Web2 users to adopt Web3 technology and perform payment activities through blockchain technology
+        </p>
+        <div class="flex flex-col sm:flex-row items-start gap-4">
+          <a href="#" class="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold hover:shadow-2xl hover:shadow-teal-500/30 transition-all duration-300 transform hover:-translate-y-1">
+            <svg class="w-5 h-5 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            View Documentation
+          </a>
+          <a href="#ecosystem" class="group inline-flex items-center gap-2 px-8 py-4 rounded-full border border-slate-700 text-slate-300 font-semibold hover:border-teal-500/50 hover:text-teal-400 transition-all duration-300 hover:bg-slate-800/50">
+            Explore Ecosystem
+            <svg class="w-5 h-5 transition-transform group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ecosystem Section -->
+  <section id="ecosystem" class="py-24 lg:py-32 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">Ecosystem</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-teal-500/30 overflow-hidden transform hover:-translate-y-2">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-teal-500/10 to-blue-600/10 rounded-full -translate-y-1/2 translate-x-1/2 transition-transform group-hover:scale-150 duration-700"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-blue-600 flex items-center justify-center mb-8 shadow-lg shadow-teal-500/20 group-hover:shadow-teal-500/40 transition-shadow duration-300">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+            </div>
+            <h3 class="font-poppins text-2xl font-bold text-slate-900 mb-4">Netlink.bio</h3>
+            <p class="text-slate-600 leading-relaxed mb-8">Platform for creating link-in-bio pages, professional CVs, and community & business pages. Designed to be easily discoverable by AI and features verification capabilities.</p>
+            <a href="#" class="inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 transform hover:-translate-y-0.5">
+              Register Free, Get NET
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-teal-500/30 overflow-hidden transform hover:-translate-y-2">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-teal-500/10 to-blue-600/10 rounded-full -translate-y-1/2 translate-x-1/2 transition-transform group-hover:scale-150 duration-700"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-blue-600 flex items-center justify-center mb-8 shadow-lg shadow-teal-500/20 group-hover:shadow-teal-500/40 transition-shadow duration-300">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+            </div>
+            <h3 class="font-poppins text-2xl font-bold text-slate-900 mb-4">Netlink Pay</h3>
+            <p class="text-slate-600 leading-relaxed mb-8">Instant crypto wallet focused on stablecoins (USDC), easy to use for daily financial activities. Directly connected to the Netlink.bio platform.</p>
+            <a href="#" class="inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 transform hover:-translate-y-0.5">
+              Learn More
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-teal-500/30 overflow-hidden transform hover:-translate-y-2">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-teal-500/10 to-blue-600/10 rounded-full -translate-y-1/2 translate-x-1/2 transition-transform group-hover:scale-150 duration-700"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-blue-600 flex items-center justify-center mb-8 shadow-lg shadow-teal-500/20 group-hover:shadow-teal-500/40 transition-shadow duration-300">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h3 class="font-poppins text-2xl font-bold text-slate-900 mb-4">NET Token</h3>
+            <p class="text-slate-600 leading-relaxed mb-8">Netlink Ecosystem Token, built on the Polygon (PoS) network, as a utility token for accessing feature upgrades, rewards, and other programs.</p>
+            <a href="#" class="inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 transform hover:-translate-y-0.5">
+              Get in Presale
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology -->
+  <section id="technology" class="py-20 bg-slate-900 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <h2 class="text-center text-3xl sm:text-4xl font-bold text-white mb-3">Technology</h2>
+      <p class="text-center text-slate-400">Powered by industry-leading blockchain infrastructure</p>
+    </div>
+    <div class="relative">
+      <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-900 to-transparent z-10"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-900 to-transparent z-10"></div>
+      <div class="flex gap-8 animate-marquee whitespace-nowrap py-4">
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-teal-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center text-white font-bold shadow-lg">P</div>
+          <span class="text-slate-200 font-semibold text-lg">Polygon</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-green-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-green-600 flex items-center justify-center text-white font-bold shadow-lg">U</div>
+          <span class="text-slate-200 font-semibold text-lg">USDC</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-blue-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold shadow-lg">S</div>
+          <span class="text-slate-200 font-semibold text-lg">Sequence</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-pink-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-pink-600 flex items-center justify-center text-white font-bold shadow-lg">L</div>
+          <span class="text-slate-200 font-semibold text-lg">li.fi</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-indigo-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold shadow-lg">D</div>
+          <span class="text-slate-200 font-semibold text-lg">Didit KYC</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-cyan-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-cyan-600 flex items-center justify-center text-white font-bold shadow-lg">A</div>
+          <span class="text-slate-200 font-semibold text-lg">Alchemy Pay</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-orange-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-orange-600 flex items-center justify-center text-white font-bold shadow-lg">T</div>
+          <span class="text-slate-200 font-semibold text-lg">Transfi</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-teal-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center text-white font-bold shadow-lg">P</div>
+          <span class="text-slate-200 font-semibold text-lg">Polygon</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-green-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-green-600 flex items-center justify-center text-white font-bold shadow-lg">U</div>
+          <span class="text-slate-200 font-semibold text-lg">USDC</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-blue-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold shadow-lg">S</div>
+          <span class="text-slate-200 font-semibold text-lg">Sequence</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-pink-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-pink-600 flex items-center justify-center text-white font-bold shadow-lg">L</div>
+          <span class="text-slate-200 font-semibold text-lg">li.fi</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-indigo-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold shadow-lg">D</div>
+          <span class="text-slate-200 font-semibold text-lg">Didit KYC</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-cyan-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-cyan-600 flex items-center justify-center text-white font-bold shadow-lg">A</div>
+          <span class="text-slate-200 font-semibold text-lg">Alchemy Pay</span>
+        </div>
+        <div class="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-orange-500/50 transition-colors cursor-default">
+          <div class="w-10 h-10 rounded-xl bg-orange-600 flex items-center justify-center text-white font-bold shadow-lg">T</div>
+          <span class="text-slate-200 font-semibold text-lg">Transfi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tokenomics -->
+  <section id="tokenomics" class="py-24 lg:py-32 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">Tokenomics</h2>
+      </div>
+      <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
+        <div class="text-center mb-10">
+          <p class="text-slate-500 text-sm uppercase tracking-wider font-medium">Total Supply</p>
+          <p class="font-poppins text-4xl md:text-5xl font-bold text-slate-900 mt-2">99,000,000 <span class="text-teal-600">NET</span></p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
+            <p class="font-poppins text-2xl font-bold text-slate-900">30%</p>
+            <p class="text-slate-600 text-sm mt-1">Community</p>
+          </div>
+          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
+            <p class="font-poppins text-2xl font-bold text-slate-900">25%</p>
+            <p class="text-slate-600 text-sm mt-1">Public & Private Sales</p>
+          </div>
+          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
+            <p class="font-poppins text-2xl font-bold text-slate-900">5%</p>
+            <p class="text-slate-600 text-sm mt-1">Investor</p>
+          </div>
+          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
+            <p class="font-poppins text-2xl font-bold text-slate-900">15%</p>
+            <p class="text-slate-600 text-sm mt-1">Development</p>
+          </div>
+          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
+            <p class="font-poppins text-2xl font-bold text-slate-900">10%</p>
+            <p class="text-slate-600 text-sm mt-1">Treasury</p>
+          </div>
+          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
+            <p class="font-poppins text-2xl font-bold text-slate-900">15%</p>
+            <p class="text-slate-600 text-sm mt-1">Founder & Team</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section id="roadmap" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">Roadmap</h2>
+      </div>
+      <div class="space-y-5" id="roadmap-accordion">
+        <div class="roadmap-item border-2 border-gray-100 rounded-3xl overflow-hidden transition-all duration-500 hover:border-teal-500/30 hover:shadow-lg">
+          <button class="w-full px-8 py-6 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors group" onclick="toggleRoadmap(this)">
+            <div class="flex items-center gap-6">
+              <div class="w-14 h-14 rounded-2xl bg-teal-300 flex items-center justify-center text-slate-900 font-bold text-lg shadow-lg">2025</div>
+              <div class="text-left">
+                <h3 class="font-poppins font-bold text-slate-900 text-xl">Foundation Phase</h3>
+                <span class="inline-flex items-center gap-1.5 text-sm text-green-600 font-semibold mt-1"><span class="w-2 h-2 rounded-full bg-green-500"></span>Completed</span>
+              </div>
+            </div>
+            <svg class="w-6 h-6 text-slate-400 transform transition-transform duration-300 roadmap-icon group-hover:text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="roadmap-content hidden px-8 py-6 bg-white">
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Launch of NET on Polygon</span></li>
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Contract & explorer verification</span></li>
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Official website & initial whitepaper</span></li>
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Global community airdrop program</span></li>
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Initial DEX Trial Connection (limited liquidity test to DEX Market)</span></li>
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Branding & positioning NET</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-item border-2 border-gray-100 rounded-3xl overflow-hidden transition-all duration-500 hover:border-teal-500/30 hover:shadow-lg">
+          <button class="w-full px-8 py-6 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors group" onclick="toggleRoadmap(this)">
+            <div class="flex items-center gap-6">
+              <div class="w-14 h-14 rounded-2xl bg-teal-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-teal-500/20">2026</div>
+              <div class="text-left">
+                <h3 class="font-poppins font-bold text-slate-900 text-xl">Growth Phase</h3>
+                <span class="inline-flex items-center gap-1.5 text-sm text-blue-600 font-semibold mt-1"><span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>In Progress</span>
+              </div>
+            </div>
+            <svg class="w-6 h-6 text-slate-400 transform transition-transform duration-300 roadmap-icon group-hover:text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="roadmap-content hidden px-8 py-6 bg-white">
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="text-slate-700">Launching App V1</span></li>
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="text-slate-700">Token Presale</span></li>
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="text-slate-700">Initial DEX Listing</span></li>
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="text-slate-700">Submit to CMC & CoinGecko</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-item border-2 border-gray-100 rounded-3xl overflow-hidden transition-all duration-500 hover:border-teal-500/30 hover:shadow-lg">
+          <button class="w-full px-8 py-6 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors group" onclick="toggleRoadmap(this)">
+            <div class="flex items-center gap-6">
+              <div class="w-14 h-14 rounded-2xl bg-teal-800 flex items-center justify-center text-white font-bold text-lg shadow-lg">2027</div>
+              <div class="text-left">
+                <h3 class="font-poppins font-bold text-slate-900 text-xl">Expansion Phase</h3>
+                <span class="inline-flex items-center gap-1.5 text-sm text-purple-600 font-semibold mt-1"><span class="w-2 h-2 rounded-full bg-purple-500"></span>Upcoming</span>
+              </div>
+            </div>
+            <svg class="w-6 h-6 text-slate-400 transform transition-transform duration-300 roadmap-icon group-hover:text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="roadmap-content hidden px-8 py-6 bg-white">
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><span class="text-slate-700">Implementation of NET ID</span></li>
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><span class="text-slate-700">Strategic Partnerships</span></li>
+              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><span class="text-slate-700">Expanding Global Users</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 text-center">
+      <h2 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Join the Ecosystem?</h2>
+      <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">Start your Web3 journey today. Create your verified profile, connect your wallet, and be part of the future.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold hover:shadow-2xl hover:shadow-teal-500/30 transition-all duration-300 transform hover:-translate-y-1">
+          Get Started Now
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </a>
+        <a href="#" class="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-slate-600 text-slate-300 font-semibold hover:border-teal-500/50 hover:text-teal-400 transition-all duration-300">
+          Read Whitepaper
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-slate-400 pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div class="lg:col-span-1">
+          <img src="https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-logo-bgdark.png" class="h-10 w-auto mb-5" alt="Netlink">
+          <p class="text-slate-500 text-sm leading-relaxed">NET (Netlink Ecosystem Token) is a utility token within the Netlink ecosystem for all members, unlocking access to services, receiving discounts, reward programs, and real participation in ecosystem growth.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-8 md:block">
+          <div>
+            <h4 class="text-white font-semibold mb-5 text-lg">Resources</h4>
+            <ul class="space-y-3">
+              <li><a href="#" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Whitepaper</a></li>
+              <li><a href="#" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Documentation</a></li>
+              <li><a href="#" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Github</a></li>
+              <li><a href="#" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Audit & Security</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-5 text-lg">Legal</h4>
+            <ul class="space-y-3">
+              <li><a href="#" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Company</a></li>
+              <li><a href="#" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Investor</a></li>
+              <li><a href="#" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Privacy Policy</a></li>
+              <li><a href="#" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Terms of Use</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="lg:col-span-1 md:col-span-2">
+          <h4 class="text-white font-semibold mb-5 text-lg">Contact</h4>
+          <ul class="space-y-4">
+            <li class="flex items-center gap-3 text-slate-500 text-sm group">
+              <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-teal-500/20 transition-colors">
+                <svg class="w-4 h-4 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              </div>
+              contact@netlinktoken.com
+            </li>
+            <li>
+              <a href="https://t.me/netlinktoken" target="_blank" class="flex items-center gap-3 text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm group">
+                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-teal-500/20 transition-colors">
+                  <svg class="w-4 h-4 text-teal-500" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </div>
+                Telegram
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/netlinktoken" target="_blank" class="flex items-center gap-3 text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm group">
+                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-teal-500/20 transition-colors">
+                  <svg class="w-4 h-4 text-teal-500" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </div>
+                X / Twitter
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/netlinktoken" target="_blank" class="flex items-center gap-3 text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm group">
+                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-teal-500/20 transition-colors">
+                  <svg class="w-4 h-4 text-teal-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </div>
+                Instagram
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 pt-8 text-center">
+        <p class="text-slate-600 text-sm mb-2">Copyright 2026 — Netlink Labs All Rights Reserved</p>
+        <p class="text-slate-700 text-xs">PT. Netlink Labs Global</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Globe Animation =====
+    (function() {
+      const canvas = document.getElementById('hero-globe');
+      const wrap = canvas.parentElement;
+      const dpr = Math.min(window.devicePixelRatio, 2);
+      let w, h, ctx;
+
+      function resize() {
+        w = wrap.clientWidth;
+        h = wrap.clientHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx = canvas.getContext('2d');
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const globe = { cx: 0, cy: 0, r: 0, rotX: 0.35, rotY: 0, rotSpeed: 0.003 };
+
+      function project(x, y, z) {
+        const cosY = Math.cos(globe.rotY);
+        const sinY = Math.sin(globe.rotY);
+        const cosX = Math.cos(globe.rotX);
+        const sinX = Math.sin(globe.rotX);
+        let x1 = x * cosY - z * sinY;
+        let z1 = x * sinY + z * cosY;
+        let y1 = y * cosX - z1 * sinX;
+        let z2 = y * sinX + z1 * cosX;
+        const scale = globe.r / (globe.r * 0.5 + z2 + globe.r * 1.8);
+        return { x: globe.cx + x1 * scale * globe.r, y: globe.cy + y1 * scale * globe.r, z: z2, scale: scale };
+      }
+
+      const latLines = [];
+      const lonLines = [];
+      for (let lat = -80; lat <= 80; lat += 15) {
+        const pts = [];
+        for (let lon = 0; lon <= 360; lon += 5) {
+          const radLat = lat * Math.PI / 180;
+          const radLon = lon * Math.PI / 180;
+          pts.push({ x: Math.cos(radLat) * Math.cos(radLon), y: Math.sin(radLat), z: Math.cos(radLat) * Math.sin(radLon) });
+        }
+        latLines.push(pts);
+      }
+      for (let lon = 0; lon < 360; lon += 20) {
+        const pts = [];
+        for (let lat = -90; lat <= 90; lat += 5) {
+          const radLat = lat * Math.PI / 180;
+          const radLon = lon * Math.PI / 180;
+          pts.push({ x: Math.cos(radLat) * Math.cos(radLon), y: Math.sin(radLat), z: Math.cos(radLat) * Math.sin(radLon) });
+        }
+        lonLines.push(pts);
+      }
+
+      const orbitChars = ['N','E','T','-','I','D',' ','N','E','T','-','I','D',' '];
+      let orbitAngle = 0;
+      let flights = [];
+      let flightTimer = 0;
+      const cities = [
+        { lat: 40, lon: -74 }, { lat: 51, lon: -0 }, { lat: 35, lon: 139 },
+        { lat: -33, lon: 151 }, { lat: 1, lon: 103 }, { lat: 25, lon: 55 },
+        { lat: -23, lon: -46 }, { lat: 52, lon: 13 },
+      ];
+
+      function latLonToXYZ(lat, lon) {
+        const rlat = lat * Math.PI / 180;
+        const rlon = lon * Math.PI / 180;
+        return { x: Math.cos(rlat) * Math.cos(rlon), y: Math.sin(rlat), z: Math.cos(rlat) * Math.sin(rlon) };
+      }
+
+      function spawnFlight() {
+        const a = cities[Math.floor(Math.random() * cities.length)];
+        let b = cities[Math.floor(Math.random() * cities.length)];
+        while (b === a) b = cities[Math.floor(Math.random() * cities.length)];
+        flights.push({ p0: latLonToXYZ(a.lat, a.lon), p1: latLonToXYZ(b.lat, b.lon), t: 0, speed: 0.008 + Math.random() * 0.006, arrived: false, pulse: 0 });
+        if (flights.length > 3) flights.shift();
+      }
+
+      let frame = 0;
+      function drawGlobe() {
+        frame++;
+        globe.rotY += globe.rotSpeed;
+        orbitAngle += 0.008;
+        flightTimer++;
+        if (flightTimer > 120) { spawnFlight(); flightTimer = 0; }
+
+        globe.cx = w * 0.72;
+        globe.cy = h * 0.52;
+        globe.r = Math.min(w, h) * 0.30;
+
+        ctx.clearRect(0, 0, w, h);
+
+        ctx.strokeStyle = 'rgba(30, 41, 59, 0.5)';
+        ctx.lineWidth = 0.5;
+        for (let x = 0; x < w; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+        for (let y = 0; y < h; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
+
+        const atmo = ctx.createRadialGradient(globe.cx, globe.cy, globe.r * 0.8, globe.cx, globe.cy, globe.r * 1.6);
+        atmo.addColorStop(0, 'rgba(45, 212, 191, 0.08)');
+        atmo.addColorStop(1, 'rgba(15, 23, 42, 0)');
+        ctx.fillStyle = atmo;
+        ctx.beginPath();
+        ctx.arc(globe.cx, globe.cy, globe.r * 1.6, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let line of latLines) {
+          ctx.beginPath();
+          let first = true;
+          for (let p of line) {
+            const proj = project(p.x, p.y, p.z);
+            if (proj.z < -globe.r * 0.1) continue;
+            if (first) { ctx.moveTo(proj.x, proj.y); first = false; }
+            else ctx.lineTo(proj.x, proj.y);
+          }
+          ctx.strokeStyle = 'rgba(45, 212, 191, 0.18)';
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+
+        for (let line of lonLines) {
+          ctx.beginPath();
+          let first = true;
+          for (let p of line) {
+            const proj = project(p.x, p.y, p.z);
+            if (proj.z < -globe.r * 0.1) continue;
+            if (first) { ctx.moveTo(proj.x, proj.y); first = false; }
+            else ctx.lineTo(proj.x, proj.y);
+          }
+          ctx.strokeStyle = 'rgba(59, 130, 246, 0.15)';
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+
+        ctx.beginPath();
+        for (let lon = 0; lon <= 360; lon += 3) {
+          const rad = lon * Math.PI / 180;
+          const p = { x: Math.cos(rad), y: 0, z: Math.sin(rad) };
+          const proj = project(p.x, p.y, p.z);
+          if (lon === 0) ctx.moveTo(proj.x, proj.y);
+          else ctx.lineTo(proj.x, proj.y);
+        }
+        ctx.strokeStyle = 'rgba(45, 212, 191, 0.35)';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        const orbitR = globe.r * 1.35;
+        const orbitTilt = 0.5;
+        ctx.font = '600 11px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        for (let i = 0; i < orbitChars.length; i++) {
+          const angle = orbitAngle + (i / orbitChars.length) * Math.PI * 2;
+          const ox = Math.cos(angle) * orbitR;
+          const oy = Math.sin(angle) * orbitR * orbitTilt;
+          const oz = Math.sin(angle) * orbitR * 0.3;
+          const proj = project(ox / globe.r, oy / globe.r, oz / globe.r);
+          if (proj.z > -globe.r * 0.05) {
+            const alpha = 0.3 + 0.7 * ((proj.z + globe.r) / (globe.r * 2));
+            ctx.fillStyle = 'rgba(94, 234, 212, ' + alpha + ')';
+            ctx.fillText(orbitChars[i], proj.x, proj.y);
+          }
+        }
+
+        for (let i = flights.length - 1; i >= 0; i--) {
+          const f = flights[i];
+          if (!f.arrived) {
+            f.t += f.speed;
+            if (f.t >= 1) { f.t = 1; f.arrived = true; f.pulse = 1; }
+            const steps = 40;
+            ctx.beginPath();
+            for (let s = 0; s <= steps; s++) {
+              const t = s / steps;
+              if (t > f.t) break;
+              const dot = f.p0.x * f.p1.x + f.p0.y * f.p1.y + f.p0.z * f.p1.z;
+              const theta = Math.acos(Math.max(-1, Math.min(1, dot)));
+              const sinT = Math.sin(theta);
+              let x, y, z;
+              if (sinT < 0.001) { x = f.p0.x; y = f.p0.y; z = f.p0.z; }
+              else {
+                const s0 = Math.sin((1 - t) * theta) / sinT;
+                const s1 = Math.sin(t * theta) / sinT;
+                x = s0 * f.p0.x + s1 * f.p1.x;
+                y = s0 * f.p0.y + s1 * f.p1.y;
+                z = s0 * f.p0.z + s1 * f.p1.z;
+              }
+              const lift = Math.sin(t * Math.PI) * 0.35;
+              const len = Math.sqrt(x*x + y*y + z*z);
+              x = x / len * (1 + lift); y = y / len * (1 + lift); z = z / len * (1 + lift);
+              const proj = project(x, y, z);
+              if (s === 0) ctx.moveTo(proj.x, proj.y);
+              else ctx.lineTo(proj.x, proj.y);
+            }
+            const progressAlpha = 0.3 + f.t * 0.7;
+            ctx.strokeStyle = 'rgba(45, 212, 191, ' + (progressAlpha * 0.7) + ')';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            const t = f.t;
+            const dot = f.p0.x * f.p1.x + f.p0.y * f.p1.y + f.p0.z * f.p1.z;
+            const theta = Math.acos(Math.max(-1, Math.min(1, dot)));
+            const sinT = Math.sin(theta);
+            let hx, hy, hz;
+            if (sinT < 0.001) { hx = f.p0.x; hy = f.p0.y; hz = f.p0.z; }
+            else {
+              const s0 = Math.sin((1 - t) * theta) / sinT;
+              const s1 = Math.sin(t * theta) / sinT;
+              hx = s0 * f.p0.x + s1 * f.p1.x;
+              hy = s0 * f.p0.y + s1 * f.p1.y;
+              hz = s0 * f.p0.z + s1 * f.p1.z;
+            }
+            const lift = Math.sin(t * Math.PI) * 0.35;
+            const hlen = Math.sqrt(hx*hx + hy*hy + hz*hz);
+            hx = hx / hlen * (1 + lift); hy = hy / hlen * (1 + lift); hz = hz / hlen * (1 + lift);
+            const hproj = project(hx, hy, hz);
+            ctx.beginPath();
+            ctx.fillStyle = '#5eead4';
+            ctx.arc(hproj.x, hproj.y, 3.5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.fillStyle = 'rgba(94, 234, 212, 0.25)';
+            ctx.arc(hproj.x, hproj.y, 10, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            f.pulse -= 0.02;
+            if (f.pulse <= 0) { flights.splice(i, 1); continue; }
+            const proj = project(f.p1.x, f.p1.y, f.p1.z);
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(45, 212, 191, ' + (f.pulse * 0.6) + ')';
+            ctx.lineWidth = 2;
+            ctx.arc(proj.x, proj.y, (1 - f.pulse) * 25 + 5, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.fillStyle = 'rgba(94, 234, 212, ' + f.pulse + ')';
+            ctx.arc(proj.x, proj.y, 3, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+        requestAnimationFrame(drawGlobe);
+      }
+      drawGlobe();
+    })();
+
+    // ===== Roadmap Accordion =====
+    function toggleRoadmap(btn) {
+      const item = btn.closest('.roadmap-item');
+      const content = item.querySelector('.roadmap-content');
+      const icon = btn.querySelector('.roadmap-icon');
+      const isOpen = !content.classList.contains('hidden');
+      document.querySelectorAll('.roadmap-content').forEach(c => c.classList.add('hidden'));
+      document.querySelectorAll('.roadmap-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+      document.querySelectorAll('.roadmap-item').forEach(i => i.classList.remove('ring-2', 'ring-teal-500/20'));
+      if (!isOpen) {
+        content.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+        item.classList.add('ring-2', 'ring-teal-500/20');
+      }
+    }
+
+    window.addEventListener('scroll', function() {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) nav.classList.add('shadow-lg');
+      else nav.classList.remove('shadow-lg');
+    });
+  </script>
+</body>
+</html>
