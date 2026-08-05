@@ -51,22 +51,22 @@
         <a href="#" class="flex items-center gap-3 group">
           <img src="https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-logo-bgdark.png" class="h-9 w-auto transition-transform group-hover:scale-105" alt="Netlink">
         </a>
-        <div class="hidden lg:flex items-center gap-8">
+        <div class="hidden md:flex items-center gap-8">
           <a href="#ecosystem" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Ecosystem</a>
           <a href="#technology" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Technology</a>
           <a href="#tokenomics" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Tokenomics</a>
           <a href="#roadmap" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Roadmap</a>
         </div>
-        <a href="#" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 hover:-translate-y-0.5">
+        <a href="#" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 hover:-translate-y-0.5">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
           Connect Wallet
         </a>
-        <button class="lg:hidden text-slate-300 hover:text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <button class="md:hidden text-slate-300 hover:text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
       </div>
     </div>
-    <div id="mobile-menu" class="hidden lg:hidden bg-slate-900 border-t border-slate-800">
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800">
       <div class="px-4 py-4 space-y-3">
         <a href="#ecosystem" class="block text-slate-400 hover:text-teal-400 py-2">Ecosystem</a>
         <a href="#technology" class="block text-slate-400 hover:text-teal-400 py-2">Technology</a>
@@ -97,7 +97,7 @@
           Netlink makes it easier for Web2 users to adopt Web3 technology and perform payment activities through blockchain technology
         </p>
         <div class="flex flex-col sm:flex-row items-start gap-4">
-          <a href="#" class="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold hover:shadow-2xl hover:shadow-teal-500/30 transition-all duration-300 transform hover:-translate-y-1">
+          <a href="https://docs.netlinktoken.com" target="_blank" rel="noopener" class="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold hover:shadow-2xl hover:shadow-teal-500/30 transition-all duration-300 transform hover:-translate-y-1">
             <svg class="w-5 h-5 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
             View Documentation
           </a>
@@ -174,7 +174,7 @@
     </div>
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden h-[26rem] md:h-[30rem] relative" id="wrap-layers">
-        <canvas id="c-layers"></canvas>
+        <canvas id="c-layers" class="absolute inset-0 w-full h-full"></canvas>
         <div class="absolute top-6 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-semibold backdrop-blur-sm z-10">Web2 Layer</div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-1.5 rounded-full bg-teal-900/60 border border-teal-700/50 text-teal-300 text-xs font-semibold backdrop-blur-sm z-10">Web3 Bridge</div>
         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-blue-900/60 border border-blue-700/50 text-blue-300 text-xs font-semibold backdrop-blur-sm z-10">Blockchain Layer</div>
@@ -375,7 +375,7 @@
       <h2 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Join the Ecosystem?</h2>
       <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">Start your Web3 journey today. Create your verified profile, connect your wallet, and be part of the future.</p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold hover:shadow-2xl hover:shadow-teal-500/30 transition-all duration-300 transform hover:-translate-y-1">
+        <a href="https://netlink.bio" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold hover:shadow-2xl hover:shadow-teal-500/30 transition-all duration-300 transform hover:-translate-y-1">
           Get Started Now
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </a>
