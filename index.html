@@ -253,40 +253,70 @@
   </section>
 
   <!-- Tokenomics -->
-  <section id="tokenomics" class="py-24 lg:py-32 bg-gray-50">
+  <section id="tokenomics" class="py-16 lg:py-20 bg-gray-50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
+      <div class="text-center mb-8">
         <h2 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">Tokenomics</h2>
       </div>
       <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
-        <div class="text-center mb-10">
+        <div class="text-center mb-8">
           <p class="text-slate-500 text-sm uppercase tracking-wider font-medium">Total Supply</p>
           <p class="font-poppins text-4xl md:text-5xl font-bold text-slate-900 mt-2">99,000,000 <span class="text-teal-600">NET</span></p>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
-            <p class="font-poppins text-2xl font-bold text-slate-900">30%</p>
-            <p class="text-slate-600 text-sm mt-1">Community</p>
+
+        <!-- Supply bar -->
+        <div id="supply-bar" class="w-full h-10 md:h-12 rounded-2xl overflow-hidden flex shadow-inner ring-1 ring-gray-100">
+          <div class="supply-segment h-full transition-all duration-300 ease-out" data-key="community" style="width:30%; background-color:#14b8a6;"></div>
+          <div class="supply-segment h-full transition-all duration-300 ease-out" data-key="sales" style="width:25%; background-color:#2563eb;"></div>
+          <div class="supply-segment h-full transition-all duration-300 ease-out" data-key="investor" style="width:5%; background-color:#f97316;"></div>
+          <div class="supply-segment h-full transition-all duration-300 ease-out" data-key="development" style="width:15%; background-color:#38bdf8;"></div>
+          <div class="supply-segment h-full transition-all duration-300 ease-out" data-key="treasury" style="width:10%; background-color:#64748b;"></div>
+          <div class="supply-segment h-full transition-all duration-300 ease-out" data-key="team" style="width:15%; background-color:#9333ea;"></div>
+        </div>
+
+        <!-- Legend -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-8">
+          <div class="supply-legend flex items-center gap-3 p-4 rounded-xl border border-transparent transition-all duration-200 cursor-default" data-key="community">
+            <span class="w-3 h-3 rounded-full flex-shrink-0" style="background-color:#14b8a6;"></span>
+            <div>
+              <p class="font-poppins font-bold text-slate-900 leading-none">30%</p>
+              <p class="text-slate-500 text-xs mt-1">Community</p>
+            </div>
           </div>
-          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
-            <p class="font-poppins text-2xl font-bold text-slate-900">25%</p>
-            <p class="text-slate-600 text-sm mt-1">Public & Private Sales</p>
+          <div class="supply-legend flex items-center gap-3 p-4 rounded-xl border border-transparent transition-all duration-200 cursor-default" data-key="sales">
+            <span class="w-3 h-3 rounded-full flex-shrink-0" style="background-color:#2563eb;"></span>
+            <div>
+              <p class="font-poppins font-bold text-slate-900 leading-none">25%</p>
+              <p class="text-slate-500 text-xs mt-1">Public & Private Sales</p>
+            </div>
           </div>
-          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
-            <p class="font-poppins text-2xl font-bold text-slate-900">5%</p>
-            <p class="text-slate-600 text-sm mt-1">Investor</p>
+          <div class="supply-legend flex items-center gap-3 p-4 rounded-xl border border-transparent transition-all duration-200 cursor-default" data-key="investor">
+            <span class="w-3 h-3 rounded-full flex-shrink-0" style="background-color:#f97316;"></span>
+            <div>
+              <p class="font-poppins font-bold text-slate-900 leading-none">5%</p>
+              <p class="text-slate-500 text-xs mt-1">Investor</p>
+            </div>
           </div>
-          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
-            <p class="font-poppins text-2xl font-bold text-slate-900">15%</p>
-            <p class="text-slate-600 text-sm mt-1">Development</p>
+          <div class="supply-legend flex items-center gap-3 p-4 rounded-xl border border-transparent transition-all duration-200 cursor-default" data-key="development">
+            <span class="w-3 h-3 rounded-full flex-shrink-0" style="background-color:#38bdf8;"></span>
+            <div>
+              <p class="font-poppins font-bold text-slate-900 leading-none">15%</p>
+              <p class="text-slate-500 text-xs mt-1">Development</p>
+            </div>
           </div>
-          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
-            <p class="font-poppins text-2xl font-bold text-slate-900">10%</p>
-            <p class="text-slate-600 text-sm mt-1">Treasury</p>
+          <div class="supply-legend flex items-center gap-3 p-4 rounded-xl border border-transparent transition-all duration-200 cursor-default" data-key="treasury">
+            <span class="w-3 h-3 rounded-full flex-shrink-0" style="background-color:#64748b;"></span>
+            <div>
+              <p class="font-poppins font-bold text-slate-900 leading-none">10%</p>
+              <p class="text-slate-500 text-xs mt-1">Treasury</p>
+            </div>
           </div>
-          <div class="text-center p-5 rounded-2xl bg-gray-50 border border-gray-100">
-            <p class="font-poppins text-2xl font-bold text-slate-900">15%</p>
-            <p class="text-slate-600 text-sm mt-1">Founder & Team</p>
+          <div class="supply-legend flex items-center gap-3 p-4 rounded-xl border border-transparent transition-all duration-200 cursor-default" data-key="team">
+            <span class="w-3 h-3 rounded-full flex-shrink-0" style="background-color:#9333ea;"></span>
+            <div>
+              <p class="font-poppins font-bold text-slate-900 leading-none">15%</p>
+              <p class="text-slate-500 text-xs mt-1">Founder & Team</p>
+            </div>
           </div>
         </div>
       </div>
@@ -294,92 +324,105 @@
   </section>
 
   <!-- Roadmap -->
-  <section id="roadmap" class="py-24 lg:py-32 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
+  <section id="roadmap" class="py-16 lg:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
         <h2 class="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">Roadmap</h2>
       </div>
-      <div class="space-y-5" id="roadmap-accordion">
-        <div class="roadmap-item border-2 border-gray-100 rounded-3xl overflow-hidden transition-all duration-500 hover:border-teal-500/30 hover:shadow-lg">
-          <button class="w-full px-8 py-6 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors group" onclick="toggleRoadmap(this)">
-            <div class="flex items-center gap-6">
-              <div class="w-14 h-14 rounded-2xl bg-teal-300 flex items-center justify-center text-slate-900 font-bold text-lg shadow-lg">2025</div>
-              <div class="text-left">
-                <h3 class="font-poppins font-bold text-slate-900 text-xl">Foundation Phase</h3>
-                <span class="inline-flex items-center gap-1.5 text-sm text-green-600 font-semibold mt-1"><span class="w-2 h-2 rounded-full bg-green-500"></span>Completed</span>
+
+      <div class="relative pl-14 md:pl-16" id="roadmap-timeline">
+        <!-- Track line -->
+        <div class="absolute left-5 md:left-6 top-2 bottom-2 w-0.5 bg-gray-200 rounded-full"></div>
+        <!-- Progress fill: 2025 done, midway through 2026 -->
+        <div class="absolute left-5 md:left-6 top-2 w-0.5 bg-teal-500 rounded-full" style="height: 38%;"></div>
+
+        <div class="space-y-10" id="roadmap-accordion">
+
+          <div class="roadmap-item relative">
+            <div class="absolute -left-14 md:-left-16 top-0 w-10 h-10 md:w-11 md:h-11 rounded-full bg-teal-500 border-4 border-white shadow-md flex items-center justify-center text-white font-bold text-xs z-10">25</div>
+            <button class="w-full text-left group" onclick="toggleRoadmap(this)">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-poppins font-bold text-slate-900 text-lg md:text-xl">Foundation</h3>
+                  <span class="inline-flex items-center gap-1.5 text-xs text-green-600 font-semibold mt-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Completed</span>
+                </div>
+                <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-300 roadmap-icon group-hover:text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </div>
+            </button>
+            <div class="roadmap-content hidden mt-4">
+              <ul class="space-y-3 border-l-2 border-gray-100 pl-5">
+                <li class="text-slate-600 text-sm">Launch of NET on Polygon</li>
+                <li class="text-slate-600 text-sm">Contract & explorer verification</li>
+                <li class="text-slate-600 text-sm">Official website & initial whitepaper</li>
+                <li class="text-slate-600 text-sm">Global community airdrop program</li>
+                <li class="text-slate-600 text-sm">Initial DEX Trial Connection (limited liquidity test to DEX Market)</li>
+                <li class="text-slate-600 text-sm">Branding & positioning NET</li>
+              </ul>
             </div>
-            <svg class="w-6 h-6 text-slate-400 transform transition-transform duration-300 roadmap-icon group-hover:text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-          </button>
-          <div class="roadmap-content hidden px-8 py-6 bg-white">
-            <ul class="space-y-4">
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Launch of NET on Polygon</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Contract & explorer verification</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Official website & initial whitepaper</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Global community airdrop program</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Initial DEX Trial Connection (limited liquidity test to DEX Market)</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div><span class="text-slate-700">Branding & positioning NET</span></li>
-            </ul>
           </div>
-        </div>
-        <div class="roadmap-item border-2 border-gray-100 rounded-3xl overflow-hidden transition-all duration-500 hover:border-teal-500/30 hover:shadow-lg">
-          <button class="w-full px-8 py-6 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors group" onclick="toggleRoadmap(this)">
-            <div class="flex items-center gap-6">
-              <div class="w-14 h-14 rounded-2xl bg-teal-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-teal-500/20">2026</div>
-              <div class="text-left">
-                <h3 class="font-poppins font-bold text-slate-900 text-xl">Product Integration</h3>
-                <span class="inline-flex items-center gap-1.5 text-sm text-blue-600 font-semibold mt-1"><span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>In Progress</span>
+
+          <div class="roadmap-item relative">
+            <div class="absolute -left-14 md:-left-16 top-0 w-10 h-10 md:w-11 md:h-11 rounded-full bg-teal-500 border-4 border-white shadow-md flex items-center justify-center text-white font-bold text-xs z-10">26</div>
+            <button class="w-full text-left group" onclick="toggleRoadmap(this)">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-poppins font-bold text-slate-900 text-lg md:text-xl">Product Integration</h3>
+                  <span class="inline-flex items-center gap-1.5 text-xs text-blue-600 font-semibold mt-1"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>In Progress</span>
+                </div>
+                <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-300 roadmap-icon group-hover:text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </div>
+            </button>
+            <div class="roadmap-content hidden mt-4">
+              <ul class="space-y-3 border-l-2 border-gray-100 pl-5">
+                <li class="text-slate-600 text-sm">Netlink Pay development inside the core Netlink app</li>
+                <li class="text-slate-600 text-sm">NET utility design finalized (fees, rewards, access)</li>
+                <li class="text-slate-600 text-sm">Legal entity established (PT Netlink Labs Global)</li>
+                <li class="text-slate-600 text-sm">Payment provider integrations (fiat on/off-ramp, KYC)</li>
+              </ul>
             </div>
-            <svg class="w-6 h-6 text-slate-400 transform transition-transform duration-300 roadmap-icon group-hover:text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-          </button>
-          <div class="roadmap-content hidden px-8 py-6 bg-white">
-            <ul class="space-y-4">
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="text-slate-700">Netlink Pay development inside the core Netlink app</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="text-slate-700">NET utility design finalized (fees, rewards, access)</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="text-slate-700">Legal entity established (PT Netlink Labs Global)</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="text-slate-700">Payment provider integrations (fiat on/off-ramp, KYC)</span></li>
-            </ul>
           </div>
-        </div>
-        <div class="roadmap-item border-2 border-gray-100 rounded-3xl overflow-hidden transition-all duration-500 hover:border-teal-500/30 hover:shadow-lg">
-          <button class="w-full px-8 py-6 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors group" onclick="toggleRoadmap(this)">
-            <div class="flex items-center gap-6">
-              <div class="w-14 h-14 rounded-2xl bg-teal-800 flex items-center justify-center text-white font-bold text-lg shadow-lg">2027</div>
-              <div class="text-left">
-                <h3 class="font-poppins font-bold text-slate-900 text-xl">Expansion & Real Use Case</h3>
-                <span class="inline-flex items-center gap-1.5 text-sm text-purple-600 font-semibold mt-1"><span class="w-2 h-2 rounded-full bg-purple-500"></span>Upcoming</span>
+
+          <div class="roadmap-item relative">
+            <div class="absolute -left-14 md:-left-16 top-0 w-10 h-10 md:w-11 md:h-11 rounded-full bg-gray-200 border-4 border-white shadow-md flex items-center justify-center text-slate-500 font-bold text-xs z-10">27</div>
+            <button class="w-full text-left group" onclick="toggleRoadmap(this)">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-poppins font-bold text-slate-900 text-lg md:text-xl">Expansion & Real Use Case</h3>
+                  <span class="inline-flex items-center gap-1.5 text-xs text-purple-600 font-semibold mt-1"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>Upcoming</span>
+                </div>
+                <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-300 roadmap-icon group-hover:text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </div>
+            </button>
+            <div class="roadmap-content hidden mt-4">
+              <ul class="space-y-3 border-l-2 border-gray-100 pl-5">
+                <li class="text-slate-600 text-sm">NET utility live inside Netlink Pay</li>
+                <li class="text-slate-600 text-sm">Official DEX listing, backed by sustainable liquidity funding</li>
+                <li class="text-slate-600 text-sm">Strategic Partnerships</li>
+                <li class="text-slate-600 text-sm">Expanding Global Users</li>
+              </ul>
             </div>
-            <svg class="w-6 h-6 text-slate-400 transform transition-transform duration-300 roadmap-icon group-hover:text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-          </button>
-          <div class="roadmap-content hidden px-8 py-6 bg-white">
-            <ul class="space-y-4">
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><span class="text-slate-700">NET utility live inside Netlink Pay</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><span class="text-slate-700">Official DEX listing, backed by sustainable liquidity funding</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><span class="text-slate-700">Strategic Partnerships</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div><span class="text-slate-700">Expanding Global Users</span></li>
-            </ul>
           </div>
-        </div>
-        <div class="roadmap-item border-2 border-gray-100 rounded-3xl overflow-hidden transition-all duration-500 hover:border-teal-500/30 hover:shadow-lg">
-          <button class="w-full px-8 py-6 flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors group" onclick="toggleRoadmap(this)">
-            <div class="flex items-center gap-6">
-              <div class="w-14 h-14 rounded-2xl bg-slate-700 flex items-center justify-center text-white font-bold text-lg shadow-lg">2028</div>
-              <div class="text-left">
-                <h3 class="font-poppins font-bold text-slate-900 text-xl">Sustainability & Wider Adoption</h3>
-                <span class="inline-flex items-center gap-1.5 text-sm text-purple-600 font-semibold mt-1"><span class="w-2 h-2 rounded-full bg-purple-500"></span>Upcoming</span>
+
+          <div class="roadmap-item relative">
+            <div class="absolute -left-14 md:-left-16 top-0 w-10 h-10 md:w-11 md:h-11 rounded-full bg-gray-200 border-4 border-white shadow-md flex items-center justify-center text-slate-500 font-bold text-xs z-10">28</div>
+            <button class="w-full text-left group" onclick="toggleRoadmap(this)">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-poppins font-bold text-slate-900 text-lg md:text-xl">Sustainability & Wider Adoption</h3>
+                  <span class="inline-flex items-center gap-1.5 text-xs text-purple-600 font-semibold mt-1"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>Upcoming</span>
+                </div>
+                <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-300 roadmap-icon group-hover:text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </div>
+            </button>
+            <div class="roadmap-content hidden mt-4">
+              <ul class="space-y-3 border-l-2 border-gray-100 pl-5">
+                <li class="text-slate-600 text-sm">Evaluation and publication of ecosystem progress since 2025</li>
+                <li class="text-slate-600 text-sm">Cross-industry collaborations</li>
+                <li class="text-slate-600 text-sm">Consideration of a Governance DAO as the community matures</li>
+              </ul>
             </div>
-            <svg class="w-6 h-6 text-slate-400 transform transition-transform duration-300 roadmap-icon group-hover:text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-          </button>
-          <div class="roadmap-content hidden px-8 py-6 bg-white">
-            <ul class="space-y-4">
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="text-slate-700">Evaluation and publication of ecosystem progress since 2025</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="text-slate-700">Cross-industry collaborations</span></li>
-              <li class="flex items-start gap-4"><div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><span class="text-slate-700">Consideration of a Governance DAO as the community matures</span></li>
-            </ul>
           </div>
+
         </div>
       </div>
     </div>
@@ -943,13 +986,41 @@
       const isOpen = !content.classList.contains('hidden');
       document.querySelectorAll('.roadmap-content').forEach(c => c.classList.add('hidden'));
       document.querySelectorAll('.roadmap-icon').forEach(i => i.style.transform = 'rotate(0deg)');
-      document.querySelectorAll('.roadmap-item').forEach(i => i.classList.remove('ring-2', 'ring-teal-500/20'));
       if (!isOpen) {
         content.classList.remove('hidden');
         icon.style.transform = 'rotate(180deg)';
-        item.classList.add('ring-2', 'ring-teal-500/20');
       }
     }
+
+    // ===== Tokenomics supply bar hover-sync =====
+    (function() {
+      const segments = document.querySelectorAll('.supply-segment');
+      const legends = document.querySelectorAll('.supply-legend');
+
+      function highlight(key) {
+        segments.forEach(s => {
+          if (s.dataset.key === key) {
+            s.style.filter = 'brightness(1.12)';
+            s.style.transform = 'scaleY(1.15)';
+          } else {
+            s.style.filter = key ? 'brightness(0.85)' : '';
+            s.style.transform = '';
+          }
+        });
+        legends.forEach(l => {
+          if (l.dataset.key === key) {
+            l.classList.add('bg-gray-50', 'border-gray-200');
+          } else {
+            l.classList.remove('bg-gray-50', 'border-gray-200');
+          }
+        });
+      }
+
+      [...segments, ...legends].forEach(el => {
+        el.addEventListener('mouseenter', () => highlight(el.dataset.key));
+        el.addEventListener('mouseleave', () => highlight(null));
+      });
+    })();
 
     window.addEventListener('scroll', function() {
       const nav = document.getElementById('navbar');
