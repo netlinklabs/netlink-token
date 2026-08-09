@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whitepaper — Netlink (NET)</title>
+  <meta name="description" content="Official Netlink (NET) whitepaper — digital identity, Web3 payments, and the NET utility token on Polygon.">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-new-logo-trans.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-inter text-slate-700 antialiased bg-slate-900">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-xl border-b border-slate-800/50" id="navbar">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-18 py-3">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-logo-bgdark.png" class="h-9 w-auto transition-transform group-hover:scale-105" alt="Netlink">
+        </a>
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="pt-36 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs font-semibold mb-6">
+        Version 2.0 &middot; August 2026
+      </span>
+      <h1 class="font-poppins text-4xl sm:text-5xl font-bold text-white mb-4">Netlink Whitepaper</h1>
+      <p class="text-slate-400 text-lg mb-8">Digital Identity &middot; Web3 Payments &middot; One Link</p>
+      <a href="https://drive.google.com/file/d/1h2AM6px3DhoEihBjnCPI9ysMvyawzkaN/view" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold hover:shadow-2xl hover:shadow-teal-500/30 transition-all duration-300 transform hover:-translate-y-1">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+        Download Whitepaper (PDF)
+      </a>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="bg-white">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 prose-content">
+
+      <section class="mb-14">
+        <h2 class="font-poppins text-2xl font-bold text-slate-900 mb-4">1. Introduction</h2>
+        <p class="text-slate-600 leading-relaxed mb-4">Netlink is a digital identity platform — bio link, CV builder, and landing page builder in one place. NET is the native utility token of the Netlink ecosystem, built on the Polygon network.</p>
+        <p class="text-slate-600 leading-relaxed">Netlink Pay, the built-in Web3 wallet inside Netlink, connects everyday users to on-chain tools without requiring any crypto experience. NET is designed to power this experience.</p>
+      </section>
+
+      <section class="mb-14">
+        <h2 class="font-poppins text-2xl font-bold text-slate-900 mb-4">2. Ecosystem Overview</h2>
+        <div class="space-y-4">
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <h3 class="font-semibold text-slate-900 mb-1">Netlink</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">The core product. Users create a bio link, CV, or landing page to represent themselves online.</p>
+          </div>
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <h3 class="font-semibold text-slate-900 mb-1">Netlink Pay</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">A sub-feature inside Netlink. A non-custodial Web3 wallet (Sequence WaaS on Polygon), created invisibly behind a familiar login (Google account), with no seed phrase required to get started.</p>
+          </div>
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <h3 class="font-semibold text-slate-900 mb-1">NET Token</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">The utility token connecting both. NET lives on Polygon and is designed to support activity across the Netlink ecosystem.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-14">
+        <h2 class="font-poppins text-2xl font-bold text-slate-900 mb-4">3. Vision & Mission</h2>
+        <h3 class="font-semibold text-slate-900 mb-2">Vision</h3>
+        <p class="text-slate-600 leading-relaxed mb-5">To make Web3 identity and payments accessible to everyone — not just crypto-native users.</p>
+        <h3 class="font-semibold text-slate-900 mb-2">Mission</h3>
+        <ul class="list-disc pl-5 space-y-2 text-slate-600 text-sm leading-relaxed">
+          <li>Give professionals (real estate agents, creators, freelancers) a single link that represents their identity and enables direct payments</li>
+          <li>Make wallet creation and crypto payments invisible and frictionless</li>
+          <li>Use NET as the connective utility token across Netlink's products</li>
+          <li>Maintain transparency through the Polygon blockchain</li>
+        </ul>
+      </section>
+
+      <section class="mb-14">
+        <h2 class="font-poppins text-2xl font-bold text-slate-900 mb-4">4. Use Cases NET</h2>
+        <p class="text-slate-600 leading-relaxed mb-4">NET's utility is under active development inside Netlink Pay. Current direction:</p>
+        <ul class="list-disc pl-5 space-y-2 text-slate-600 text-sm leading-relaxed mb-4">
+          <li><strong class="text-slate-900">Fee & Reward Layer</strong> — NET is intended to reduce fees or provide rewards for transactions inside Netlink Pay</li>
+          <li><strong class="text-slate-900">Ecosystem Access</strong> — NET holders may receive early access to new Netlink features</li>
+          <li><strong class="text-slate-900">Community Support</strong> — NET can be sent as a signal of support between users</li>
+          <li><strong class="text-slate-900">Future Integration</strong> — as Netlink Pay matures, more concrete utility (staking, discounts, loyalty) will be introduced</li>
+        </ul>
+        <p class="text-slate-500 text-sm italic">This section will be updated as utilities go live.</p>
+      </section>
+
+      <section class="mb-14">
+        <h2 class="font-poppins text-2xl font-bold text-slate-900 mb-4">5. Tokenomics</h2>
+        <div class="overflow-hidden rounded-xl border border-slate-200 mb-6">
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-slate-200">
+              <tr class="bg-slate-50"><td class="px-4 py-3 font-medium text-slate-900">Network</td><td class="px-4 py-3 text-slate-600">Polygon (PoS)</td></tr>
+              <tr><td class="px-4 py-3 font-medium text-slate-900">Name</td><td class="px-4 py-3 text-slate-600">Netlink</td></tr>
+              <tr class="bg-slate-50"><td class="px-4 py-3 font-medium text-slate-900">Symbol</td><td class="px-4 py-3 text-slate-600">NET</td></tr>
+              <tr><td class="px-4 py-3 font-medium text-slate-900">Decimals</td><td class="px-4 py-3 text-slate-600">18</td></tr>
+              <tr class="bg-slate-50"><td class="px-4 py-3 font-medium text-slate-900">Total Supply</td><td class="px-4 py-3 text-slate-600">99,000,000 NET</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-slate-600 text-sm mb-6">Contract Address: <code class="text-xs bg-slate-100 px-2 py-1 rounded">0x0e893B239094A5c573373d44CF1C7D03576b95cb</code></p>
+
+        <h3 class="font-semibold text-slate-900 mb-3">Token Allocation</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-slate-600 text-sm leading-relaxed">
+          <li>Community: 30%</li>
+          <li>Public & Private Sales: 25%</li>
+          <li>Founder & Team: 15%</li>
+          <li>Development: 15%</li>
+          <li>Treasury: 10%</li>
+          <li>Investor: 5%</li>
+        </ul>
+      </section>
+
+      <section class="mb-14">
+        <h2 class="font-poppins text-2xl font-bold text-slate-900 mb-4">6. Roadmap</h2>
+        <div class="space-y-6">
+          <div class="pl-5 border-l-2 border-teal-500">
+            <h3 class="font-semibold text-slate-900 mb-2">2025 — Foundation</h3>
+            <ul class="list-disc pl-5 space-y-1 text-slate-600 text-sm leading-relaxed">
+              <li>NET launched on Polygon, contract verified</li>
+              <li>Official website and initial whitepaper published</li>
+            </ul>
+          </div>
+          <div class="pl-5 border-l-2 border-slate-200">
+            <h3 class="font-semibold text-slate-900 mb-2">2026 — Product Integration</h3>
+            <ul class="list-disc pl-5 space-y-1 text-slate-600 text-sm leading-relaxed">
+              <li>Netlink Pay development inside the core Netlink app</li>
+              <li>NET utility design finalized (fees, rewards, access)</li>
+              <li>Legal entity established (PT Netlink Labs Global)</li>
+              <li>Payment provider integrations (fiat on/off-ramp, KYC) in progress</li>
+            </ul>
+          </div>
+          <div class="pl-5 border-l-2 border-slate-200">
+            <h3 class="font-semibold text-slate-900 mb-2">2027 — Expansion & Real Use Case</h3>
+            <ul class="list-disc pl-5 space-y-1 text-slate-600 text-sm leading-relaxed">
+              <li>NET utility live inside Netlink Pay</li>
+              <li>Official DEX listing, backed by sustainable liquidity funding</li>
+              <li>Partnerships with communities and creators</li>
+              <li>Target active holder growth</li>
+            </ul>
+          </div>
+          <div class="pl-5 border-l-2 border-slate-200">
+            <h3 class="font-semibold text-slate-900 mb-2">2028 — Sustainability & Wider Adoption</h3>
+            <ul class="list-disc pl-5 space-y-1 text-slate-600 text-sm leading-relaxed">
+              <li>Evaluation and publication of ecosystem progress since 2025</li>
+              <li>Cross-industry collaborations</li>
+              <li>Consideration of a Governance DAO as the community matures</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-14">
+        <h2 class="font-poppins text-2xl font-bold text-slate-900 mb-4">7. Governance</h2>
+        <p class="text-slate-600 leading-relaxed">NET is envisioned to transition toward community governance as adoption grows. In the current stage, decisions are made by the Netlink team, with community input through open channels.</p>
+      </section>
+
+      <section class="mb-4">
+        <h2 class="font-poppins text-2xl font-bold text-slate-900 mb-4">8. Disclaimer</h2>
+        <p class="text-slate-500 text-sm leading-relaxed italic">Netlink Token (NET) is a community-based digital asset. Its value may fluctuate based on market conditions. NET is not currently listed on any exchange or DEX. This document does not constitute investment advice and serves as an introductory overview of the project. This whitepaper may evolve alongside the ecosystem; prior versions will remain accessible for transparency.</p>
+      </section>
+
+      <p class="text-slate-400 text-sm text-center pt-8 border-t border-slate-100">Netlink Team — August 2026</p>
+    </article>
+  </main>
+
+  <!-- Version History -->
+  <section class="py-20 bg-slate-900">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-poppins text-2xl sm:text-3xl font-bold text-white mb-2 text-center">Version History</h2>
+      <p class="text-slate-400 text-sm text-center mb-10 max-w-xl mx-auto">In the interest of transparency, every past version of the Netlink whitepaper remains available for download below.</p>
+
+      <div class="space-y-4">
+        <!-- V2 - prominent -->
+        <div class="relative p-6 rounded-2xl bg-gradient-to-r from-teal-500/10 to-blue-600/10 border-2 border-teal-500/40">
+          <span class="absolute -top-3 left-6 px-3 py-1 rounded-full bg-teal-500 text-slate-900 text-xs font-bold">CURRENT VERSION</span>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-2">
+            <div>
+              <p class="text-white font-semibold text-lg">Whitepaper V2.0</p>
+              <p class="text-slate-400 text-sm mt-0.5">August 2026</p>
+            </div>
+            <a href="https://drive.google.com/file/d/1h2AM6px3DhoEihBjnCPI9ysMvyawzkaN/view" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 whitespace-nowrap">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              Download V2
+            </a>
+          </div>
+        </div>
+
+        <!-- V1 -->
+        <div class="p-6 rounded-2xl bg-slate-800/30 border border-slate-700/50">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <p class="text-slate-300 font-semibold text-lg">Whitepaper V1.0</p>
+              <p class="text-slate-500 text-sm mt-0.5">2025 &middot; Superseded</p>
+            </div>
+            <a href="https://drive.google.com/file/d/1IiH9sfGYLiwKfDya0NxiTyV9PPJlxe6u/view" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-slate-600 text-slate-300 text-sm font-semibold hover:border-teal-500/50 hover:text-teal-400 transition-all duration-300 whitespace-nowrap">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              Download V1
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-slate-400 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-t border-slate-800 pt-8 text-center">
+        <p class="text-slate-600 text-sm mb-2">Copyright 2026 — Netlink Labs All Rights Reserved</p>
+        <p class="text-slate-700 text-xs">PT. Netlink Labs Global</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
