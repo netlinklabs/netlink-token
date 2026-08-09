@@ -38,13 +38,37 @@ Official smart contract and transparency repository for **Netlink (NET)** — a 
 |----------------|-----------|-------------|
 | Mint / Unlimited Supply | ❌ | No mint function detected |
 | Blacklist / Freeze | ❌ | No blacklist control |
-| Trading Fees / Tax | ✅ *Low* | Fixed 0% transfer fee |
+| Trading Fees / Tax | ℹ️ *Unknown* | No live trading pair yet, tax not simulated |
 | Ownership Renounced | ✅ | Ownership locked for transparency |
 | Proxy Contract | ❌ | No proxy pattern detected |
-| Honeypot / Malicious Pattern | ❌ | Safe to trade on Polygon DEXs |
+| Honeypot / Malicious Pattern | ❌ | No malicious code patterns detected |
 
 > A local copy of this summary is stored in `/audits/goplus-scan.txt`.
 
 ---
 
 ## 📁 Repository Structure
+```
+netlink-token/
+├── assets/                  Logos, whitepaper, and brand images
+├── audits/                  Security scan snapshots (e.g. goplus-scan.txt)
+├── docs/                    Source for docs.netlinktoken.com (Mintlify)
+├── smart-contracts/         Netlink.sol and verified source input
+├── index.html                NET token landing page (netlinktoken.com)
+└── README.md                 This file
+```
+
+---
+
+## 🔗 Links
+- Website: [netlinktoken.com](https://netlinktoken.com)
+- Documentation: [docs.netlinktoken.com](https://docs.netlinktoken.com)
+- Contract on PolygonScan: [0x0e89...6b95cb](https://polygonscan.com/token/0x0e893B239094A5c573373d44CF1C7D03576b95cb)
+
+---
+
+## ⚠️ Disclaimer
+NET is a utility token intended for use within the Netlink ecosystem. It is
+not an investment product, and nothing in this repository or related
+materials should be construed as financial advice. Always verify the
+official contract address above before any on-chain interaction.
