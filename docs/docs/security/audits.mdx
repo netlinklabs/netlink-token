@@ -1,3 +1,7 @@
+---
+title: "audits"
+---
+
 ## Automated Security Scanning
 
 As part of its early-stage security practices, the Netlink smart contract has been reviewed using widely recognized automated third-party security scanners. These tools are commonly used across the Web3 ecosystem to provide quick assessments of deployed contracts and highlight potential risk indicators.
@@ -5,17 +9,24 @@ As part of its early-stage security practices, the Netlink smart contract has be
 The results below reflect the publicly available scan outcomes at the time this documentation was prepared.
 
 | Scanner | Result Summary |
-|-------|----------------|
-| **GoPlus Security** | Risky Items: **0**<br/>No critical or high-risk indicators were flagged by the automated analysis. |
-| **SolidityScan (QuickScan)** | Overall Score: **94.64 (Great)**<br/>Strong automated assessment based on common vulnerability checks. |
+| --- | --- |
+| **GoPlus Security** | Risky Items: **0**<br />No critical or high-risk indicators were flagged by the automated analysis. |
+| **SolidityScan (QuickScan)** | Overall Score: **94.64 (Great)**<br />Strong automated assessment based on common vulnerability checks. |
+| **CertiK Skynet** | Token Scan Score: **72/100**<br />21 checks passed, 0 attentions, 2 alerts flagged for review (see below). |
 
 ### References
 
-- GoPlus Security Report  
-  https://gopluslabs.io/token-security/137/0x0e893B239094A5c573373d44CF1C7D03576b95cb
+- GoPlus Security Report<br />[https://gopluslabs.io/token-security/137/0x0e893B239094A5c573373d44CF1C7D03576b95cb](https://gopluslabs.io/token-security/137/0x0e893B239094A5c573373d44CF1C7D03576b95cb)
+- SolidityScan QuickScan Report<br />[https://solidityscan.com/quickscan/0x0e893b239094a5c573373d44cf1c7d03576b95cb/polygonscan/mainnet](https://solidityscan.com/quickscan/0x0e893b239094a5c573373d44cf1c7d03576b95cb/polygonscan/mainnet)
+- CertiK Skynet Token Scan<br />[https://skynet.certik.com/tools/token-scan/polygon/0x0e893B239094A5c573373d44CF1C7D03576b95cb](https://skynet.certik.com/tools/token-scan/polygon/0x0e893B239094A5c573373d44CF1C7D03576b95cb)
 
-- SolidityScan QuickScan Report  
-  https://solidityscan.com/quickscan/0x0e893b239094a5c573373d44cf1c7d03576b95cb/polygonscan/mainnet
+### About the CertiK Alerts
+
+CertiK's automated scan flagged two items for review. Both have been assessed and are clarified below:
+
+**1. "Is Mintable"**<br /> The contract's `_mint()` function is called exactly once, inside the constructor, during deployment — to issue the fixed total supply of 99,000,000 NET. There is no separate, callable `mint()` function in the contract, and no way to create additional tokens after deployment. This flag is a common false positive from automated scanners that detect the presence of `_mint` in the source code without distinguishing constructor-only minting from an exploitable minting function.
+
+**2. "Major Holder Ratio"**<br /> The top holder address (62.05% of total supply) is a liquidity/treasury allocation locked via PinkLock using a multisig wallet, not a freely movable wallet under single-key control. It does not represent an immediate sell or rug-pull risk. As with holder concentration generally, this will decrease naturally as tokens are distributed through future ecosystem activity.
 
 ### Scope and Limitations
 
@@ -30,4 +41,3 @@ In addition to automated security scanning, Netlink recognizes the importance of
 As the ecosystem evolves and additional utilities are introduced, the Netlink team intends to pursue further security reviews or third-party audits when appropriate. This phased approach allows security efforts to align with actual system complexity and usage rather than treating audits as a one-time checkbox.
 
 Any completed manual reviews or external audits will be transparently disclosed and referenced in this documentation.
-
