@@ -24,57 +24,57 @@
       {
         "group": "Getting Started",
         "pages": [
-          "docs/about-netlink",
-          "docs/vision",
-          "docs/why-netlink"
+          "docs/docs/about-netlink",
+          "docs/docs/vision",
+          "docs/docs/why-netlink"
         ]
       },
       {
         "group": "Token",
         "pages": [
-          "docs/token/network",
-          "docs/token/netlink-token",
-          "docs/token/how-to-buy-net",
-          "docs/token/tokenomics"
+          "docs/docs/token/network",
+          "docs/docs/token/netlink-token",
+          "docs/docs/token/how-to-buy-net",
+          "docs/docs/token/tokenomics"
         ]
       },
       {
         "group": "Utility",
         "pages": [
-          "docs/utility/overview",
-          "docs/utility/applications",
-          "docs/utility/how-it-works",
-          "docs/utility/use-cases"
+          "docs/docs/utility/overview",
+          "docs/docs/utility/applications",
+          "docs/docs/utility/how-it-works",
+          "docs/docs/utility/use-cases"
         ]
       },
       {
         "group": "Ecosystem",
         "pages": [
-          "docs/ecosystem/for-founders",
-          "docs/ecosystem/for-members",
-          "docs/ecosystem/for-communities",
-          "docs/ecosystem/for-investors"
+          "docs/docs/ecosystem/for-founders",
+          "docs/docs/ecosystem/for-members",
+          "docs/docs/ecosystem/for-communities",
+          "docs/docs/ecosystem/for-investors"
         ]
       },
       {
         "group": "Security & Trust",
         "pages": [
-          "docs/security/overview",
-          "docs/security/multisig-wallets",
-          "docs/security/audits",
-          "docs/security/disclaimer"
+          "docs/docs/security/overview",
+          "docs/docs/security/multisig-wallets",
+          "docs/docs/security/audits",
+          "docs/docs/security/disclaimer"
         ]
       },
       {
         "group": "Whitepaper",
         "pages": [
-          "docs/whitepaper"
+          "docs/docs/whitepaper"
         ]
       },
       {
         "group": "Build Logs",
         "pages": [
-          "build-logs/2025"
+          "docs/build-logs/2025"
         ]
       }
     ]
