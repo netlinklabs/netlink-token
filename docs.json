@@ -74,15 +74,9 @@
       {
         "group": "Build Logs",
         "pages": [
-          "docs/build-logs/2025"
+          "docs/build-logs/2025",
+          "docs/build-logs/2026"
         ]
-      }
-      {
-  "group": "Build Logs",
-  "pages": [
-    "docs/build-logs/2025",
-    "docs/build-logs/2026"
-  ]
       }
     ]
   }
