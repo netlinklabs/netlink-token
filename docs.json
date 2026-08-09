@@ -6,8 +6,8 @@
   "favicon": "/assets/net-new-logo-trans.png",
 
   "logo": {
-    "light": "/assets/net-logo-bgdark.png",
-    "dark": "/assets/net-logo-bglight.png"
+    "light": "/assets/net-logo-bglight.png",
+    "dark": "/assets/net-logo-bgdark.png"
   },
 
   "colors": {
