@@ -3,11 +3,11 @@
 
   "name": "Netlink Ecosystem",
 
-  "favicon": "/assets/Logo Net Transparan 200.png",
+  "favicon": "/assets/net-new-logo-trans.png",
 
   "logo": {
-    "light": "/assets/NET Landscape Dark New.png",
-    "dark": "/assets/NET Rebrand Light New.png"
+    "light": "/assets/net-logo-bgdark.png",
+    "dark": "/assets/net-logo-bglight.png"
   },
 
   "colors": {
