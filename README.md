@@ -43,7 +43,7 @@ Official smart contract and transparency repository for **Netlink (NET)** — a 
 | Proxy Contract | ❌ | No proxy pattern detected |
 | Honeypot / Malicious Pattern | ❌ | No malicious code patterns detected |
 
-> A local copy of this summary is stored in `/audits/goplus-scan.txt`.
+> A local copy of this summary is stored in `/audits/goplus-scan.md`.
 
 ---
 
