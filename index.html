@@ -4,6 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Netlink Ecosystem</title>
+  <meta name="description" content="Netlink Ecosystem Token (NET) is a utility token on Polygon PoS, powering payments, rewards, and Web3 access across the Netlink ecosystem.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://netlinktoken.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Netlink">
+  <meta property="og:title" content="Netlink Ecosystem">
+  <meta property="og:description" content="Netlink Ecosystem Token (NET) is a utility token on Polygon PoS, powering payments, rewards, and Web3 access across the Netlink ecosystem.">
+  <meta property="og:url" content="https://netlinktoken.com/">
+  <meta property="og:image" content="https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-new-logo-trans.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@netlinktoken">
+  <meta name="twitter:title" content="Netlink Ecosystem">
+  <meta name="twitter:description" content="Netlink Ecosystem Token (NET) is a utility token on Polygon PoS, powering payments, rewards, and Web3 access across the Netlink ecosystem.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-new-logo-trans.png">
+
   <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-new-logo-trans.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,10 +127,34 @@
       to   { opacity: 1; transform: translateY(0); }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Netlink",
+    "url": "https://netlinktoken.com/",
+    "logo": "https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-new-logo-trans.png",
+    "sameAs": [
+      "https://t.me/netlinktoken",
+      "https://twitter.com/netlinktoken",
+      "https://instagram.com/netlinktoken",
+      "https://github.com/netlinklabs/netlink-token"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Netlink Ecosystem",
+    "url": "https://netlinktoken.com/"
+  }
+  </script>
 </head>
 <body class="font-inter text-slate-700 antialiased">
 
   <!-- Navbar -->
+  <header>
   <nav class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-xl border-b border-slate-800/50 transition-all duration-300" id="navbar">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-18 py-3">
@@ -147,7 +190,9 @@
       </div>
     </div>
   </nav>
+  </header>
 
+  <main>
   <!-- Hero with Globe -->
   <section class="relative flex items-center bg-slate-900 overflow-hidden pt-[87px] pb-16">
     <canvas id="hero-globe" class="absolute inset-0 w-full h-full z-0"></canvas>
@@ -526,6 +571,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <!-- Footer -->
   <footer class="bg-slate-950 text-slate-400 pt-20 pb-10">
@@ -536,7 +582,7 @@
           <p class="text-slate-500 text-sm leading-relaxed">NET (Netlink Ecosystem Token) is a utility token within the Netlink ecosystem for all members, unlocking access to services, receiving discounts, reward programs, and real participation in ecosystem growth.</p>
         </div>
         <div>
-          <h4 class="text-white font-semibold mb-5 text-lg">Resources</h4>
+          <p class="text-white font-semibold mb-5 text-lg">Resources</p>
           <ul class="space-y-3">
             <li><a href="whitepaper.html" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Whitepaper</a></li>
             <li><a href="https://docs.netlinktoken.com" target="_blank" rel="noopener" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Documentation</a></li>
@@ -545,7 +591,7 @@
           </ul>
         </div>
         <div>
-          <h4 class="text-white font-semibold mb-5 text-lg">Legal</h4>
+          <p class="text-white font-semibold mb-5 text-lg">Legal</p>
           <ul class="space-y-3">
             <li><a href="#" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Company</a></li>
             <li><a href="#" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Investor</a></li>
@@ -554,7 +600,7 @@
           </ul>
         </div>
         <div class="col-span-2 md:col-span-1">
-          <h4 class="text-white font-semibold mb-5 text-lg">Contact</h4>
+          <p class="text-white font-semibold mb-5 text-lg">Contact</p>
           <ul class="space-y-4">
             <li class="flex items-center gap-3 text-slate-500 text-sm group">
               <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center group-hover:bg-teal-500/20 transition-colors">
