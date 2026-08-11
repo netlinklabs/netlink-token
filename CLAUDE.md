@@ -49,6 +49,9 @@ NET token landing page + docs for **Netlink Ecosystem Token**, a utility token o
 - QuickSwap test pool exists but liquidity was withdrawn (near-empty pool, causes "low liquidity" wallet warnings). This is a known, unresolved state — don't "fix" by adding liquidity without instruction.
 - No public DEX listing push planned until after main Netlink app launch + Presale Phase 3.
 
+## After making changes
+Always update CHANGELOG.md to reflect what was changed, in the same PR.
+
 ## Before committing
 
 - Run through branding + language rules above on any UI-facing change.
