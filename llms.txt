@@ -1,0 +1,29 @@
+# Netlink Ecosystem Token (NET)
+
+> Netlink (NET) is the Netlink Ecosystem Token — a utility token on the Polygon PoS network. It powers payments, rewards, and Web3 access across the Netlink digital identity ecosystem. Netlink is also the name of a separate link-in-bio and digital identity platform (netlink.bio) — NET is its utility token, not a standalone product.
+
+## Key Facts
+
+- Token name (on-chain): Netlink
+- Symbol: NET
+- Network: Polygon PoS (chainId 137)
+- Contract address: 0x0e893B239094A5c573373d44CF1C7D03576b95cb
+- Token standard: ERC-20 (OpenZeppelin standard implementation)
+
+## Official Links
+
+- Website: https://netlinktoken.com
+- Documentation: https://docs.netlinktoken.com
+- GitHub: https://github.com/netlinklabs/netlink-token
+- LinkedIn: https://www.linkedin.com/company/netlinklabs/
+- Netlink platform (main app): https://netlink.bio
+
+## Security & Audits
+
+- Contract has been reviewed by multiple automated scanners (SolidityScan, GoPlus, CertiK Skynet).
+- A portion of total supply is held in a locked wallet (PinkLock + multisig) — this shows as a centralization flag in automated scans but is documented and intentional.
+- Full audit documentation: https://docs.netlinktoken.com (see Security section)
+
+## Contact
+
+- Email: contact@netlinktoken.com
