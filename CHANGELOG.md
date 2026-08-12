@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `company.html`: added `<meta name="format-detection" content="telephone=no">` so mobile browsers stop auto-detecting the NIB digit string as a phone number and prefixing it with a "Nomor telepon" label.
 
 ### Changed
+- `shared/site-nav.js`: footer "Legal → Investor" link now points to the Investor/Partnership inquiry form (`forms.zohopublic.com/.../InvestorPartnershipInquiry/...`) instead of `https://netlink.bio/investor.html`, as a temporary redirect. Still opens in a new tab (`target="_blank" rel="noopener"`).
 - `company.html`: split the Legal Entity "Registered Location" row into "Registered Location" (city/province) and a separate "Country" row for clearer international readability; simplified "Entity Type" to "Perseroan Perorangan (Single Member LLC)".
 - `company.html`: Team cards now show full names (Ramlan Hadiansyah, Yohan Benyamin Betty, Alek) and a LinkedIn button (`target="_blank" rel="noopener"`) at the bottom of each card.
 - `company.html`: corrected "Entity Type" from "Perseroan Terbatas (PT)" to "Perseroan Perorangan (PT Perorangan)" to match the legal entity type stated in SK Menkumham AHU-A109922.AH.01.30.Tahun 2026; redesigned the Team section from plain photo-and-name rows into individual cards (background, border, shadow, hover lift/glow, teal role badge) in a responsive 3-column desktop / 1-column mobile grid.
