@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="netGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a3d91"/>
+      <stop offset="100%" stop-color="#1fb6a6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer hexagon -->
+  <polygon points="16,1 29,8.5 29,23.5 16,31 3,23.5 3,8.5"
+           fill="url(#netGrad)" stroke="#ffffff" stroke-width="1"/>
+
+  <!-- Inner hexagon outline (thin) -->
+  <polygon points="16,3.6 26.6,9.8 26.6,22.2 16,28.4 5.4,22.2 5.4,9.8"
+           fill="none" stroke="#ffffff" stroke-width="0.5"/>
+
+  <!-- Stylized N shape (two slanted, vertically-staggered parallelograms) -->
+  <path d="M14.1 12.6 L18.3 12.6 L13.8 21.4 L9.6 21.4 Z"
+        fill="none" stroke="#ffffff" stroke-width="1" stroke-linejoin="round"/>
+  <path d="M18.3 10.3 L22.4 10.3 L17.5 19.1 L13.5 19.1 Z"
+        fill="none" stroke="#ffffff" stroke-width="1" stroke-linejoin="round"/>
+</svg>
