@@ -20,7 +20,9 @@
 
   const homeHref = isIndex ? '#' : 'index.html';
   const LOGO = 'https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-logo-bgdark.png';
-  const LOGIN_URL = 'https://netlink.bio/login.html';
+  // Temporary: the app isn't live on its custom domain yet, so "Launch App"
+  // points to the local coming-soon page instead of netlink.bio/login.html.
+  const APP_URL = 'app.html';
 
   const headerHTML = `
     <nav class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-xl border-b border-slate-800/50 transition-all duration-300" id="navbar">
@@ -37,7 +39,7 @@
             <a href="${link('#roadmap')}" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Roadmap</a>
             <a href="whitepaper.html" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Whitepaper</a>
           </div>
-          <a href="${LOGIN_URL}" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 hover:-translate-y-0.5">
+          <a href="${APP_URL}" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 hover:-translate-y-0.5">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             Launch App
           </a>
@@ -54,7 +56,7 @@
           <a href="${link('#tokenomics')}" class="block text-slate-400 hover:text-teal-400 py-2">Tokenomics</a>
           <a href="${link('#roadmap')}" class="block text-slate-400 hover:text-teal-400 py-2">Roadmap</a>
           <a href="whitepaper.html" class="block text-slate-400 hover:text-teal-400 py-2">Whitepaper</a>
-          <a href="${LOGIN_URL}" class="block w-full text-center px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold">Launch App</a>
+          <a href="${APP_URL}" class="block w-full text-center px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold">Launch App</a>
         </div>
       </div>
     </nav>

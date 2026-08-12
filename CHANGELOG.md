@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- `app.html`: temporary "coming soon" page for the app (dark slate-900 theme, teal/blue gradients matching `index.html`/`company.html`) — hero with the netlink-bio link-in-bio banner (float/glow animation), "In Development" status badge, Q3 2026 timeline note with footnote, a 3-pillar Netlink/Netlink Pay/NET Token grid linking to Docs/Whitepaper, secondary CTAs (Whitepaper, Documentation), and social links pulled from the existing footer (Telegram, X/Twitter, Instagram). Uses this repo's own `shared/site-nav.js` header/footer, not netlink-bio's.
 - `privacy-policy.html`: general privacy policy for the netlinktoken.com informational site — visitor analytics/cookies, investor-form data (name/email, if submitted), third-party services used (Google Fonts, Vercel, Zoho Forms), and an explicit statement that this site does not collect KYC or wallet data (handled separately by netlink.bio under its own policy).
 - `terms.html`: general terms of use for netlinktoken.com — informational-only / not an investment solicitation, the "NET is not equity" disclaimer (same citation as `company.html`), IP ownership by PT Netlink Labs Global, governing law (Republic of Indonesia), and a pointer to the Whitepaper for technical token details.
 - Shared site-nav system (`shared/site-nav.js`): injects the header/footer markup (unchanged Tailwind design) into `<div id="site-header">` / `<div id="site-footer">` mounts, so navbar and footer are maintained in one place instead of duplicated per page. Handles the `#ecosystem` / `#technology` / `#tokenomics` / `#roadmap` anchors being valid only on `index.html` by prefixing them with `index.html` on other pages, and re-wires the existing mobile-menu toggle and navbar scroll-shadow behavior.
@@ -18,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `company.html`: added `<meta name="format-detection" content="telephone=no">` so mobile browsers stop auto-detecting the NIB digit string as a phone number and prefixing it with a "Nomor telepon" label.
 
 ### Changed
+- `shared/site-nav.js`: "Launch App" (desktop + mobile) now points to the local `app.html` coming-soon page instead of `https://netlink.bio/login.html`, as a temporary measure until the app is live on its custom domain.
 - `shared/site-nav.js`: footer "Legal → Investor" link now points to the Investor/Partnership inquiry form (`forms.zohopublic.com/.../InvestorPartnershipInquiry/...`) instead of `https://netlink.bio/investor.html`, as a temporary redirect. Still opens in a new tab (`target="_blank" rel="noopener"`).
 - `company.html`: split the Legal Entity "Registered Location" row into "Registered Location" (city/province) and a separate "Country" row for clearer international readability; simplified "Entity Type" to "Perseroan Perorangan (Single Member LLC)".
 - `company.html`: Team cards now show full names (Ramlan Hadiansyah, Yohan Benyamin Betty, Alek) and a LinkedIn button (`target="_blank" rel="noopener"`) at the bottom of each card.
