@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - "Home" link as the first item in the desktop and mobile navbar menus (`index.html`).
 
 ### Changed
+- `company.html`: Legal Entity section now shows the actual NIB and SK Menkumham registration numbers (previously "To be published"); Team section adds a role and short bio under each of Ramlan, Yohan, and Alex.
 - `index.html` and `whitepaper.html`: replaced hardcoded `<header>`/`<nav>` and `<footer>` blocks with `shared/site-nav.js` mounts. `whitepaper.html` previously had its own minimal back-to-home nav and copyright-only footer; it now shares the full site nav/footer used on `index.html`.
 - Footer "Documentation" link now points to https://docs.netlinktoken.com (previously an empty `#` placeholder).
 - Footer "Github" link now points to https://github.com/netlinklabs/netlink-token (previously an empty `#` placeholder).
