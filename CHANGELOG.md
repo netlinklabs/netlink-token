@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 - `company.html`: added `<meta name="format-detection" content="telephone=no">` so mobile browsers stop auto-detecting the NIB digit string as a phone number and prefixing it with a "Nomor telepon" label.
+- `index.html`: added `will-change: transform` and `transform: translateZ(0)` to `.animate-marquee` (the "Integrates with" logo marquee). On a reported device, the marquee `<img>` logos loaded successfully (confirmed via the browser's own resource inspector) but never painted on screen — the card backgrounds/borders rendered fine while only the `<img>` content stayed blank, and scrolling/rotating didn't force a repaint. That matches a known Chromium/Android compositing issue where images inside a continuously `transform`-animated element aren't reliably promoted to their own GPU layer; explicitly hinting the promotion works around it.
 
 ### Changed
 - `shared/site-nav.js`: "Launch App" (desktop + mobile) now points to the local `app.html` coming-soon page instead of `https://netlink.bio/login.html`, as a temporary measure until the app is live on its custom domain.
