@@ -81,7 +81,7 @@
             <p class="text-white font-semibold mb-5 text-lg">Legal</p>
             <ul class="space-y-3">
               <li><a href="company.html" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Company</a></li>
-              <li><a href="https://netlink.bio/investor.html" target="_blank" rel="noopener" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Investor</a></li>
+              <li><a href="https://forms.zohopublic.com/labsnetlinkteamgm1/form/InvestorPartnershipInquiry/formperma/sn2mTI_Z151GVLTqLG0mk8Dt5XT4qG_78xr8LckrHNc" target="_blank" rel="noopener" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Investor</a></li>
               <li><a href="privacy-policy.html" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Privacy Policy</a></li>
               <li><a href="terms.html" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Terms of Use</a></li>
             </ul>
