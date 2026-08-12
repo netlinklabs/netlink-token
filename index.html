@@ -41,17 +41,12 @@
     }
   </script>
   <style>
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    #tech-marquee {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
-    .animate-marquee {
-      animation: marquee 30s linear infinite;
-      will-change: transform;
-      transform: translateZ(0);
-    }
-    .animate-marquee:hover {
-      animation-play-state: paused;
+    #tech-marquee::-webkit-scrollbar {
+      display: none;
     }
     .gradient-text {
       background: linear-gradient(135deg, #2dd4bf, #3b82f6, #6366f1);
@@ -289,19 +284,37 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
       <p class="text-center text-slate-400 text-sm uppercase tracking-wider font-medium">Integrates with</p>
     </div>
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap items-center justify-center gap-6">
-        <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50">
-          <img src="assets/integrations/logo-polygon.png" alt="Polygon" class="h-8 md:h-10 w-auto object-contain">
+    <div class="relative">
+      <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-900 to-transparent z-10 pointer-events-none"></div>
+      <div id="tech-marquee" class="flex overflow-hidden whitespace-nowrap py-4">
+        <div class="flex gap-8 shrink-0 pr-8">
+          <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-purple-500/50 transition-colors cursor-default">
+            <img src="assets/integrations/logo-polygon.png" alt="Polygon" class="h-8 md:h-10 w-auto object-contain">
+          </div>
+          <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-blue-500/50 transition-colors cursor-default">
+            <img src="assets/integrations/logo-sequence.png" alt="Sequence" class="h-8 md:h-10 w-auto object-contain">
+          </div>
+          <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-pink-500/50 transition-colors cursor-default">
+            <img src="assets/integrations/logo-lifi.png" alt="li.fi" class="h-8 md:h-10 w-auto object-contain">
+          </div>
+          <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-indigo-500/50 transition-colors cursor-default">
+            <img src="assets/integrations/logo-didit.png" alt="Didit KYC" class="h-8 md:h-10 w-auto object-contain">
+          </div>
         </div>
-        <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50">
-          <img src="assets/integrations/logo-sequence.png" alt="Sequence" class="h-8 md:h-10 w-auto object-contain">
-        </div>
-        <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50">
-          <img src="assets/integrations/logo-lifi.png" alt="li.fi" class="h-8 md:h-10 w-auto object-contain">
-        </div>
-        <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50">
-          <img src="assets/integrations/logo-didit.png" alt="Didit KYC" class="h-8 md:h-10 w-auto object-contain">
+        <div class="flex gap-8 shrink-0 pr-8" aria-hidden="true">
+          <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-purple-500/50 transition-colors cursor-default">
+            <img src="assets/integrations/logo-polygon.png" alt="" class="h-8 md:h-10 w-auto object-contain">
+          </div>
+          <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-blue-500/50 transition-colors cursor-default">
+            <img src="assets/integrations/logo-sequence.png" alt="" class="h-8 md:h-10 w-auto object-contain">
+          </div>
+          <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-pink-500/50 transition-colors cursor-default">
+            <img src="assets/integrations/logo-lifi.png" alt="" class="h-8 md:h-10 w-auto object-contain">
+          </div>
+          <div class="flex items-center justify-center px-8 py-4 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:border-indigo-500/50 transition-colors cursor-default">
+            <img src="assets/integrations/logo-didit.png" alt="" class="h-8 md:h-10 w-auto object-contain">
+          </div>
         </div>
       </div>
     </div>
@@ -984,6 +997,41 @@
         });
       }, { threshold: 0.3 });
       observer.observe(grid);
+    })();
+
+    // ===== "Integrates with" logo marquee (JS-driven scrollLeft, not CSS transform) =====
+    (function() {
+      const track = document.getElementById('tech-marquee');
+      if (!track) return;
+
+      const pxPerSecond = 46;
+      let halfWidth = 0;
+      let paused = false;
+
+      function measure() {
+        halfWidth = track.scrollWidth / 2;
+      }
+      window.addEventListener('load', measure);
+      window.addEventListener('resize', measure);
+      measure();
+
+      track.addEventListener('mouseenter', () => { paused = true; });
+      track.addEventListener('mouseleave', () => { paused = false; });
+
+      let last = null;
+      function step(ts) {
+        if (last === null) last = ts;
+        const dt = (ts - last) / 1000;
+        last = ts;
+        if (!paused && halfWidth > 0) {
+          track.scrollLeft += pxPerSecond * dt;
+          if (track.scrollLeft >= halfWidth) {
+            track.scrollLeft -= halfWidth;
+          }
+        }
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
     })();
   </script>
   <script src="shared/site-nav.js"></script>
