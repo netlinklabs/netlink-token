@@ -75,6 +75,7 @@
           <div>
             <p class="text-white font-semibold mb-5 text-lg">Resources</p>
             <ul class="space-y-3">
+              <li><a href="about.html" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">About</a></li>
               <li><a href="whitepaper.html" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Whitepaper</a></li>
               <li><a href="https://docs.netlinktoken.com" target="_blank" rel="noopener" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Documentation</a></li>
               <li><a href="https://github.com/netlinklabs/netlink-token" target="_blank" rel="noopener" class="text-slate-500 hover:text-teal-400 transition-colors duration-200 text-sm">Github</a></li>
