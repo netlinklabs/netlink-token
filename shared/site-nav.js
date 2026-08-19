@@ -19,7 +19,7 @@
   }
 
   const homeHref = isIndex ? '#' : 'index.html';
-  const LOGO = 'https://raw.githubusercontent.com/netlinklabs/netlink-token/refs/heads/main/assets/net-logo-bgdark.png';
+  const LOGO = '/assets/net-logo-bgdark.png';
   // Temporary: the app isn't live on its custom domain yet, so "Launch App"
   // points to the local coming-soon page instead of netlink.bio/login.html.
   const APP_URL = 'app.html';
@@ -33,6 +33,7 @@
           </a>
           <div class="hidden md:flex items-center gap-8">
             <a href="${homeHref}" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Home</a>
+            <a href="about.html" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">About</a>
             <a href="${link('#ecosystem')}" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Ecosystem</a>
             <a href="${link('#technology')}" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Technology</a>
             <a href="${link('#tokenomics')}" class="text-sm text-slate-400 hover:text-teal-400 transition-colors duration-200 font-medium">Tokenomics</a>
@@ -51,6 +52,7 @@
       <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800">
         <div class="px-4 py-4 space-y-3">
           <a href="${homeHref}" class="block text-slate-400 hover:text-teal-400 py-2">Home</a>
+          <a href="about.html" class="block text-slate-400 hover:text-teal-400 py-2">About</a>
           <a href="${link('#ecosystem')}" class="block text-slate-400 hover:text-teal-400 py-2">Ecosystem</a>
           <a href="${link('#technology')}" class="block text-slate-400 hover:text-teal-400 py-2">Technology</a>
           <a href="${link('#tokenomics')}" class="block text-slate-400 hover:text-teal-400 py-2">Tokenomics</a>
