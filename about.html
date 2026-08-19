@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About NET — Netlink Ecosystem Token</title>
+<meta name="description" content="NET is the Netlink Ecosystem Token — a utility token unlocking access, rewards, and participation across the Netlink platform.">
+<link rel="canonical" href="https://netlinktoken.com/about">
+<link rel="icon" type="image/svg+xml" href="/assets/net.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root{
+    --bg:#070b13;
+    --surface:#0e1522;
+    --surface-2:#121a2a;
+    --border:rgba(255,255,255,0.08);
+    --text:#e7edf6;
+    --muted:#8a96aa;
+    --teal:#2fd8c4;
+    --blue:#3b82f6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  header{
+    padding:18px 20px;
+    border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;
+    max-width:760px;margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;}
+  .brand img{width:28px;height:28px;}
+  .brand span.sub{color:var(--teal);font-weight:500;font-size:14px;margin-left:2px;}
+  .back-link{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:13px;}
+  .back-link:hover{color:var(--text);}
+
+  main{max-width:640px;margin:0 auto;padding:40px 20px 64px;}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--teal);
+    background:rgba(47,216,196,0.08);
+    border:1px solid rgba(47,216,196,0.18);
+    padding:5px 10px;border-radius:999px;
+    margin-bottom:18px;
+  }
+
+  h1{
+    font-size:28px;font-weight:800;letter-spacing:-0.01em;
+    margin-bottom:14px;
+  }
+  h1 .accent{
+    background:linear-gradient(90deg,var(--teal),var(--blue));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  p.lead{
+    color:var(--muted);
+    font-size:15.5px;
+    margin-bottom:8px;
+  }
+
+  section{margin-top:40px;}
+  h2{
+    font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:16px;
+  }
+
+  .usecases{
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .usecase{
+    display:flex;gap:14px;align-items:flex-start;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:16px;
+  }
+  .usecase .hex{
+    flex:0 0 auto;
+    width:34px;height:34px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,rgba(47,216,196,0.15),rgba(59,130,246,0.15));
+    border:1px solid rgba(47,216,196,0.25);
+    clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  }
+  .usecase .hex i{width:16px;height:16px;color:var(--teal);}
+  .usecase .body h3{font-size:14.5px;font-weight:600;margin-bottom:3px;}
+  .usecase .body p{font-size:13.5px;color:var(--muted);}
+
+  .cta-row{
+    display:flex;gap:10px;margin-top:32px;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:13.5px;font-weight:600;
+    padding:11px 18px;border-radius:10px;
+    border:1px solid var(--border);
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,var(--teal),var(--blue));
+    color:#04101a;border:none;
+  }
+  .btn-ghost{background:var(--surface);color:var(--text);}
+
+  .meta-box{
+    margin-top:40px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:16px 18px;
+  }
+  .meta-row{
+    display:flex;justify-content:space-between;gap:12px;
+    padding:9px 0;border-bottom:1px solid var(--border);
+    font-size:13px;
+  }
+  .meta-row:last-child{border-bottom:none;}
+  .meta-row span:first-child{color:var(--muted);}
+  .meta-row span:last-child{font-weight:600;text-align:right;word-break:break-all;}
+
+  footer{
+    max-width:640px;margin:0 auto;padding:24px 20px 40px;
+    color:var(--muted);font-size:12.5px;
+    border-top:1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="brand">
+    <img src="/assets/net.svg" alt="Netlink">
+    Netlink<span class="sub">token</span>
+  </a>
+  <a href="/" class="back-link"><i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Home</a>
+</header>
+
+<main>
+  <span class="eyebrow"><i data-lucide="hexagon" style="width:12px;height:12px;"></i> About NET</span>
+
+  <h1>The <span class="accent">utility token</span><br>behind the Netlink ecosystem.</h1>
+
+  <p class="lead">NET (Netlink Ecosystem Token) is a utility token used inside the Netlink application. It unlocks features, rewards active members, and lets the community take part in the ecosystem's growth.</p>
+  <p class="lead">NET runs on the Polygon network as an ERC-20 token, built for low fees and fast transactions.</p>
+
+  <section>
+    <h2>Use Cases</h2>
+    <div class="usecases">
+      <div class="usecase">
+        <div class="hex"><i data-lucide="unlock"></i></div>
+        <div class="body">
+          <h3>Feature Access</h3>
+          <p>Unlock advanced tools inside Netlink, such as premium bio link options and identity features.</p>
+        </div>
+      </div>
+      <div class="usecase">
+        <div class="hex"><i data-lucide="gift"></i></div>
+        <div class="body">
+          <h3>Rewards &amp; Loyalty</h3>
+          <p>Earn NET through activity on the platform and redeem it for in-app benefits.</p>
+        </div>
+      </div>
+      <div class="usecase">
+        <div class="hex"><i data-lucide="percent"></i></div>
+        <div class="body">
+          <h3>Discounts</h3>
+          <p>Use NET to get reduced pricing on paid Netlink services and upgrades.</p>
+        </div>
+      </div>
+      <div class="usecase">
+        <div class="hex"><i data-lucide="users"></i></div>
+        <div class="body">
+          <h3>Ecosystem Participation</h3>
+          <p>Hold and use NET to take part in the growth of the Netlink ecosystem as new features roll out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-row">
+    <a href="/whitepaper" class="btn btn-primary"><i data-lucide="file-text" style="width:15px;height:15px;"></i> Read Whitepaper</a>
+    <a href="/company" class="btn btn-ghost"><i data-lucide="building-2" style="width:15px;height:15px;"></i> Company Info</a>
+  </div>
+
+  <div class="meta-box">
+    <div class="meta-row"><span>Token Name</span><span>Netlink Ecosystem Token</span></div>
+    <div class="meta-row"><span>Symbol</span><span>NET</span></div>
+    <div class="meta-row"><span>Network</span><span>Polygon (ERC-20)</span></div>
+    <div class="meta-row"><span>Contract</span><span>0x0e89...b95cb</span></div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Netlink. NET is a utility token and does not represent equity, ownership, or profit-sharing in PT Netlink Labs Global.
+</footer>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>
