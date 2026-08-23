@@ -144,33 +144,10 @@
         </div>
       </section>
 
-      <!-- Add to Wallet -->
-      <section class="mb-4">
-        <h2 class="font-poppins text-2xl font-bold text-slate-900 mb-4">Add NET to Your Wallet</h2>
-        <div class="bg-slate-50 rounded-2xl border border-slate-200 p-6 md:p-8">
-          <p class="text-slate-600 leading-relaxed mb-6">One tap to add NET — logo included — directly into your wallet app. No manual copy-paste needed.</p>
-
-          <div id="walletButtonGroup" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <button id="trustWalletBtn" type="button" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold text-sm hover:shadow-lg hover:shadow-teal-500/20 transition-all duration-300">
-              <img src="assets/net.svg" alt="" class="w-5 h-5 rounded-full">
-              Add via Trust Wallet
-            </button>
-            <button id="metamaskBtn" type="button" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border border-slate-300 bg-white text-slate-700 font-semibold text-sm hover:border-teal-500/50 hover:text-teal-600 transition-all duration-300">
-              <img src="assets/net.svg" alt="" class="w-5 h-5 rounded-full">
-              Add via MetaMask
-            </button>
-          </div>
-
-          <p id="addNetStatus" class="text-xs mt-3 text-slate-400"></p>
-          <p class="text-slate-400 text-xs mt-4">Using a different wallet? Use the Contract Address, Symbol, and Decimals above to add NET manually.</p>
-        </div>
-      </section>
-
     </article>
   </main>
 
   <!-- Footer -->
-
   <div id="site-footer"></div>
 
   <script src="shared/site-nav.js"></script>
@@ -206,96 +183,6 @@
         try { document.execCommand('copy'); } catch (e) {}
         document.body.removeChild(ta);
         cb();
-      }
-    })();
-  </script>
-
-  <script>
-    (function () {
-      var NET_TOKEN = {
-        address: "0x0e893B239094A5c573373d44CF1C7D03576b95cb",
-        symbol: "NET",
-        decimals: 18,
-        image: "https://netlinktoken.com/assets/net.svg"
-      };
-      var POLYGON_CHAIN_ID_HEX = "0x89";     // 137, for wallet_switchEthereumChain
-      var POLYGON_SLIP44_ID = "966";         // Polygon coin id used by Trust Wallet deep links
-      var PAGE_URL = "netlinktoken.com/about.html";
-
-      var trustBtn = document.getElementById('trustWalletBtn');
-      var mmBtn = document.getElementById('metamaskBtn');
-      var status = document.getElementById('addNetStatus');
-
-      function setStatus(msg, tone) {
-        var colors = {
-          info: 'text-slate-400',
-          ok: 'text-teal-600 font-semibold',
-          err: 'text-red-500'
-        };
-        status.textContent = msg;
-        status.className = 'text-xs mt-3 ' + (colors[tone] || colors.info);
-      }
-
-      // --- Trust Wallet: direct deep link, opens native "Add Token" screen ---
-      // Works straight from mobile browser, no extension or dapp-browser hop needed.
-      if (trustBtn) {
-        trustBtn.addEventListener('click', function () {
-          var deepLink = 'https://link.trustwallet.com/add_asset?asset=c' + POLYGON_SLIP44_ID + '_t' + NET_TOKEN.address;
-          setStatus('Opening Trust Wallet...', 'info');
-          window.location.href = deepLink;
-        });
-      }
-
-      // --- MetaMask: if already inside a wallet browser / extension, use wallet_watchAsset directly.
-      // Otherwise, hop into MetaMask's in-app browser via deep link, then user taps again there. ---
-      async function ensurePolygonNetwork() {
-        var currentChainId = await window.ethereum.request({ method: 'eth_chainId' });
-        if (currentChainId !== POLYGON_CHAIN_ID_HEX) {
-          await window.ethereum.request({
-            method: 'wallet_switchEthereumChain',
-            params: [{ chainId: POLYGON_CHAIN_ID_HEX }]
-          });
-        }
-      }
-
-      async function watchAssetDirect() {
-        setStatus('Requesting wallet connection...', 'info');
-        await window.ethereum.request({ method: 'eth_requestAccounts' });
-        await ensurePolygonNetwork();
-        var wasAdded = await window.ethereum.request({
-          method: 'wallet_watchAsset',
-          params: {
-            type: 'ERC20',
-            options: {
-              address: NET_TOKEN.address,
-              symbol: NET_TOKEN.symbol,
-              decimals: NET_TOKEN.decimals,
-              image: NET_TOKEN.image
-            }
-          }
-        });
-        if (wasAdded) {
-          setStatus('NET token added successfully!', 'ok');
-        } else {
-          setStatus('Not added. You can try again anytime.', 'info');
-        }
-      }
-
-      if (mmBtn) {
-        mmBtn.addEventListener('click', async function () {
-          if (window.ethereum) {
-            try {
-              await watchAssetDirect();
-            } catch (err) {
-              console.error(err);
-              setStatus('Something went wrong. Please try again.', 'err');
-            }
-            return;
-          }
-          // No injected wallet — hop into MetaMask's own in-app browser.
-          setStatus('Opening in MetaMask app...', 'info');
-          window.location.href = 'https://metamask.app.link/dapp/' + PAGE_URL;
-        });
       }
     })();
   </script>
