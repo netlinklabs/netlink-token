@@ -144,6 +144,21 @@
         </div>
       </section>
 
+      <!-- Add to Wallet -->
+      <section class="mb-4">
+        <h2 class="font-poppins text-2xl font-bold text-slate-900 mb-4">Add NET to Your Wallet</h2>
+        <div class="bg-slate-50 rounded-2xl border border-slate-200 p-6 md:p-8">
+          <p class="text-slate-600 leading-relaxed mb-6">One click to add NET — logo included — directly into MetaMask, Trust Wallet, or any EVM-compatible wallet.</p>
+
+          <button id="addNetToWalletBtn" type="button" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold text-sm hover:shadow-lg hover:shadow-teal-500/20 transition-all duration-300">
+            <img src="assets/net-new-logo-trans.png" alt="" class="w-5 h-5 rounded-full">
+            <span id="addNetBtnLabel">Add NET to Wallet</span>
+          </button>
+
+          <p id="addNetStatus" class="text-xs mt-3 text-slate-400"></p>
+        </div>
+      </section>
+
     </article>
   </main>
 
@@ -184,6 +199,74 @@
         document.body.removeChild(ta);
         cb();
       }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var NET_TOKEN = {
+        address: "0x0e893B239094A5c573373d44CF1C7D03576b95cb",
+        symbol: "NET",
+        decimals: 18,
+        image: "https://netlinktoken.com/assets/net-new-logo-trans.png"
+      };
+      var POLYGON_CHAIN_ID = "0x89"; // 137
+
+      var btn = document.getElementById('addNetToWalletBtn');
+      var label = document.getElementById('addNetBtnLabel');
+      var status = document.getElementById('addNetStatus');
+      if (!btn) return;
+
+      async function ensurePolygonNetwork() {
+        var currentChainId = await window.ethereum.request({ method: 'eth_chainId' });
+        if (currentChainId !== POLYGON_CHAIN_ID) {
+          await window.ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: POLYGON_CHAIN_ID }]
+          });
+        }
+      }
+
+      btn.addEventListener('click', async function () {
+        if (!window.ethereum) {
+          status.textContent = 'No wallet detected. Open this page inside your wallet app browser, or install MetaMask / Trust Wallet.';
+          status.className = 'text-xs mt-3 text-red-500';
+          return;
+        }
+
+        try {
+          status.textContent = 'Requesting wallet connection...';
+          status.className = 'text-xs mt-3 text-slate-400';
+
+          await window.ethereum.request({ method: 'eth_requestAccounts' });
+          await ensurePolygonNetwork();
+
+          var wasAdded = await window.ethereum.request({
+            method: 'wallet_watchAsset',
+            params: {
+              type: 'ERC20',
+              options: {
+                address: NET_TOKEN.address,
+                symbol: NET_TOKEN.symbol,
+                decimals: NET_TOKEN.decimals,
+                image: NET_TOKEN.image
+              }
+            }
+          });
+
+          if (wasAdded) {
+            status.textContent = 'NET token added successfully!';
+            status.className = 'text-xs mt-3 text-teal-600 font-semibold';
+          } else {
+            status.textContent = 'Not added. You can try again anytime.';
+            status.className = 'text-xs mt-3 text-slate-400';
+          }
+        } catch (err) {
+          console.error(err);
+          status.textContent = 'Something went wrong. Please try again.';
+          status.className = 'text-xs mt-3 text-red-500';
+        }
+      });
     })();
   </script>
 </body>
