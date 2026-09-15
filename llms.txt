@@ -1,6 +1,8 @@
-# Netlink Ecosystem Token (NET)
+# NET (Netlink Ecosystem Token)
 
-> Netlink (NET) is the Netlink Ecosystem Token — a utility token on the Polygon PoS network. It powers payments, rewards, and Web3 access across the Netlink digital identity ecosystem. Netlink is also the name of a separate link-in-bio and digital identity platform (netlink.bio) — NET is its utility token, not a standalone product.
+> NET (Netlink Ecosystem Token) is a utility token on Polygon PoS that powers the Netlink ecosystem. Netlink is also the name of a separate digital identity platform (netlink.bio) — NET is its utility token, not a standalone product.
+
+NET is used within the Netlink platform ecosystem. Netlink is a digital identity platform for bio-link profiles, CVs, and landing pages — designed to be easily discoverable by AI search engines. Netlink integrates directly with Netlink Pay, a stablecoin-focused (USDC) crypto wallet for sending and receiving payments globally. NET is operated by Netlink Labs, under the legal entity PT Netlink Labs Global, based in Indonesia.
 
 ## Key Facts
 
@@ -10,20 +12,34 @@
 - Contract address: 0x0e893B239094A5c573373d44CF1C7D03576b95cb
 - Token standard: ERC-20 (OpenZeppelin standard implementation)
 
-## Official Links
+## Docs
 
-- Website: https://netlinktoken.com
-- Documentation: https://docs.netlinktoken.com
-- GitHub: https://github.com/netlinklabs/netlink-token
-- LinkedIn: https://www.linkedin.com/company/netlinklabs/
-- Netlink platform (main app): https://netlink.bio
+- [Documentation](https://docs.netlinktoken.com): Full technical documentation — token design, utility, ecosystem, and security
+- [Documentation llms.txt](https://docs.netlinktoken.com/llms.txt): Machine-readable index of all documentation pages (auto-generated)
+- [Whitepaper](https://netlinktoken.com/whitepaper): NET token whitepaper, including tokenomics details
+
+## Ecosystem
+
+- [Netlink App](https://netlink.bio): Bio-link, CV, and business landing page platform with an integrated crypto wallet (Netlink Pay)
+- [Company](https://netlinktoken.com/company): Company profile — Netlink Labs / PT Netlink Labs Global
 
 ## Security & Audits
 
-- Contract has been reviewed by multiple automated scanners (SolidityScan, GoPlus, CertiK Skynet).
-- A portion of total supply is held in a locked wallet (PinkLock + multisig) — this shows as a centralization flag in automated scans but is documented and intentional.
+- The contract has been reviewed by multiple automated scanners (SolidityScan, GoPlus, CertiK Skynet)
+- A portion of total supply is held in a locked wallet (PinkLock + multisig) — this shows as a centralization flag in automated scans, but is documented and intentional
 - Full audit documentation: https://docs.netlinktoken.com (see Security section)
+
+## Social
+
+- [GitHub](https://github.com/netlinklabs/netlink-token): Source code repository for the token website
+- [LinkedIn](https://www.linkedin.com/company/netlinklabs): Netlink Labs company page
+- [X (Twitter)](https://x.com/netlinktoken): Official NET Token account
 
 ## Contact
 
 - Email: contact@netlinktoken.com
+
+## Optional
+
+- [Terms of Use](https://netlinktoken.com/terms): Website terms of use
+- [Privacy Policy](https://netlinktoken.com/privacy-policy): Privacy policy
