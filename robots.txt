@@ -24,5 +24,3 @@ Allow: /
 
 User-agent: Bingbot
 Allow: /
-
-Sitemap: https://netlinktoken.com/sitemap.xml
