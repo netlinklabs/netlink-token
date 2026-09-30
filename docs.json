@@ -61,6 +61,7 @@
         "pages": [
           "docs/docs/security/overview",
           "docs/docs/security/multisig-wallets",
+          "docs/docs/security/lock-schedule",
           "docs/docs/security/audits",
           "docs/docs/security/disclaimer"
         ]
